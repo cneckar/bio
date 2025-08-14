@@ -6,6 +6,15 @@ function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      // You could add a toast notification here if you want
+      console.log('Text copied');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -43,11 +52,10 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Building the Future Through Strategic Investment
+              Cris Neckar: VC Partner @ Two Bear Capital
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Investor, entrepreneur, and thought leader focused on transformative technologies 
-                and sustainable business models that drive meaningful change.
+                  Investor, Entrepreneur, Doard Director, Advisor, Hacker, and Researcher.
               </p>
               <div className="flex space-x-4">
                 <a 
@@ -92,7 +100,7 @@ function App() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About</h2>
             <div className="prose prose-lg mx-auto text-gray-600">
-              <p className="text-xl leading-relaxed mb-6">
+              <p className="text-lg leading-relaxed mb-6">
               Cris Neckar is a Partner at Two Bear Capital, where he invests in cybersecurity, advanced technologies, 
               and the intersection of tech and life sciences. A 20-year veteran of the information security industry, 
               Cris has led groundbreaking work in vulnerability research, offensive security, and incident response.
@@ -103,14 +111,14 @@ function App() {
               he pioneered continuous offensive assessment services and played a pivotal role in the initial discovery 
               and analysis of NSO Group’s Pegasus spyware.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed mb-6">
               Earlier in his career, Cris was one of the original members of Google’s Chrome Security Team, contributing 
               to advancements in browser hardening, attack mitigation, automated vulnerability discovery, and the exposure 
               of nation-state campaigns—work that helped lay the foundation for Google’s Project Zero. He began his career 
               at Neohapsis (now Cisco Systems), where he led the reverse engineering effort during the investigation of 
               the Heartland Payment Systems breach, then the largest breach in history.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed mb-6">
               Cris’s research is widely cited in the security community, and he has spoken at major technical conferences 
               around the world. He has also served as a curriculum advisory board member and adjunct professor at DePaul 
               University, developing one of the first graduate-level courses in application security assessment and exploit 
@@ -307,6 +315,72 @@ function App() {
         </div>
       </section>
 
+      {/* Selected Vulnerabilities */}
+      <section id="vulnerabilities" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Selected Vulnerability Disclosures</h2>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm text-gray-700 border border-gray-200 rounded-lg overflow-hidden">
+              <thead className="bg-gray-100 text-gray-900">
+                <tr>
+                  <th className="py-3 px-4 text-left font-semibold border-b">CVE ID</th>
+                  <th className="py-3 px-4 text-left font-semibold border-b">Software</th>
+                  <th className="py-3 px-4 text-left font-semibold border-b">Vulnerability</th>
+                  <th className="py-3 px-4 text-left font-semibold border-b">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {id:"CVE-2018-17568", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17568"},
+                  {id:"CVE-2018-17569", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17569"},
+                  {id:"CVE-2018-17570", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17570"},
+                  {id:"CVE-2017-6753", software:"Cisco WebEx", vuln:"Remote Command Execution", link:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex"},
+                  {id:"CVE-2016-9189", software:"Python Pillow", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9189"},
+                  {id:"CVE-2016-9190", software:"Python Pillow", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9190"},
+                  {id:"CVE-2015-0059", software:"Microsoft Windows", vuln:"Memory Corruption", link:"https://technet.microsoft.com/library/security/dn903755.aspx"},
+                  {id:"CVE-2015-0060", software:"Microsoft Windows", vuln:"Memory Corruption", link:"https://technet.microsoft.com/library/security/dn903755.aspx"},
+                  {id:"CVE-2013-0917", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/03/stable-channel-update_26.html"},
+                  {id:"CVE-2013-0896", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/02/stable-channel-update_21.html"},
+                  {id:"CVE-2013-0836", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
+                  {id:"CVE-2013-0834", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
+                  {id:"CVE-2013-0833", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
+                  {id:"CVE-2013-0832", software:"Google Chrome", vuln:"Use After Free", link:"http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html"},
+                  {id:"CVE-2012-5143", software:"Google Chrome", vuln:"Integer Overflow", link:"http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html"},
+                  {id:"CVE-2012-5128", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2012/11/stable-channel-release-and-beta-channel.html"},
+                  {id:"CVE-2012-3605", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202561"},
+                  {id:"CVE-2012-2893", software:"Google Chrome", vuln:"Double Free", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
+                  {id:"CVE-2012-2892", software:"Google Chrome", vuln:"Pop-up Blocker Bypass", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
+                  {id:"CVE-2012-2880", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
+                  {id:"CVE-2012-2523", software:"Microsoft Internet Explorer", vuln:"Integer Overflow", link:"https://technet.microsoft.com/library/security/ms12-056"},
+                  {id:"CVE-2012-0632", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
+                  {id:"CVE-2011-3922", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html"},
+                  {id:"CVE-2011-3910", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html"},
+                  {id:"CVE-2011-3233", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4981"},
+                  {id:"CVE-2011-2872", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
+                  {id:"CVE-2011-2869", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
+                  {id:"CVE-2011-2813", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4981"},
+                  {id:"CVE-2011-2339", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202349"},
+                  {id:"CVE-2011-1806", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2011/05/stable-channel-update_24.html"},
+                  {id:"CVE-2011-1800", software:"Google Chrome", vuln:"Multiple Integer Overflows", link:"http://googlechromereleases.blogspot.com/2011/05/stable-channel-update.html"},
+                  {id:"CVE-2010-3821", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4455"},
+                  {id:"CVE-2010-3805", software:"Apple WebKit", vuln:"Integer Overflow", link:"http://support.apple.com/en-us/HT4455"}                
+                ].map((cve) => (
+                  <tr key={cve.id} className="border-b hover:bg-gray-50">
+                    <td className="py-2 px-4">{cve.id}</td>
+                    <td className="py-2 px-4">{cve.software}</td>
+                    <td className="py-2 px-4">{cve.vuln}</td>
+                    <td className="py-2 px-4">
+                      <a href={cve.link} target="_blank" rel="noopener" className="text-blue-600 hover:text-blue-700">
+                        View
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       {/* Media Resources */}
       <section id="media" className="py-16 bg-gray-50">
@@ -320,15 +394,18 @@ function App() {
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
                   <div className="flex justify-between items-center mb-3">
                     <h4 className="font-semibold text-gray-900">Short Bio (50 words)</h4>
-                    <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
+                    <button 
+                      onClick={() => copyToClipboard("Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity and advanced technology. A 20-year security veteran, he has led groundbreaking vulnerability research, co-founded Divergent Security, served as CISO of Spring Labs, and was an original member of Google's Chrome Security Team uncovering nation-state and criminal campaigns.")}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                    >
                       <Download className="w-4 h-4 mr-1" />
                       Copy
                     </button>
                   </div>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity and advanced technology. A 20-year 
                     security veteran, he has led groundbreaking vulnerability research, co-founded Divergent Security, served 
-                    as CISO of Spring Labs, and was an original member of Google’s Chrome Security Team uncovering nation-state 
+                    as CISO of Spring Labs, and was an original member of Google's Chrome Security Team uncovering nation-state 
                     and criminal campaigns.
                   </p>
                 </div>
@@ -336,17 +413,20 @@ function App() {
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
                   <div className="flex justify-between items-center mb-3">
                     <h4 className="font-semibold text-gray-900">Medium Bio (100 words)</h4>
-                    <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
+                    <button 
+                      onClick={() => copyToClipboard("Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity, advanced technologies, and the intersection of tech and life sciences. A 20-year veteran of the information security industry, he has served as CISO of Spring Labs, co-founded Divergent Security, and was an original member of Google's Chrome Security Team, where his work helped lay the foundation for Project Zero. Cris has led investigations into major breaches, including the Heartland Payment Systems incident and the discovery of NSO Group's Pegasus spyware. He frequently speaks at leading security conferences and has taught graduate-level courses on application security and exploit development.")}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                    >
                       <Download className="w-4 h-4 mr-1" />
                       Copy
                     </button>
                   </div>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                   Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity, advanced technologies, and the 
                   intersection of tech and life sciences. A 20-year veteran of the information security industry, he has served 
-                  as CISO of Spring Labs, co-founded Divergent Security, and was an original member of Google’s Chrome Security 
+                  as CISO of Spring Labs, co-founded Divergent Security, and was an original member of Google's Chrome Security 
                   Team, where his work helped lay the foundation for Project Zero. Cris has led investigations into major breaches, 
-                  including the Heartland Payment Systems incident and the discovery of NSO Group’s Pegasus spyware. He frequently 
+                  including the Heartland Payment Systems incident and the discovery of NSO Group's Pegasus spyware. He frequently 
                   speaks at leading security conferences and has taught graduate-level courses on application security and exploit 
                   development.
                   </p>
@@ -354,35 +434,42 @@ function App() {
                 
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
                   <div className="flex justify-between items-center mb-3">
-                    <h4 className="font-semibold text-gray-900">Long Bio (200+ words)</h4>
-                    <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
+                    <h4 className="font-semibold text-gray-900">Long Form Bio</h4>
+                    <button 
+                      onClick={() => copyToClipboard("Cris Neckar is a Partner at Two Bear Capital, an advisor to a diverse set of startups, and a veteran of more than two decades in the information security industry. He invests at the intersection of cybersecurity, advanced technologies, and life sciences, bringing deep technical expertise to high-impact opportunities.\n\nPrior to joining Two Bear Capital, Cris served as Chief Information Security Officer at Spring Labs, where he built comprehensive security, compliance, and product security programs for a decentralized data tokenization platform. He co-founded Divergent Security, a top-tier offensive cybersecurity assessment firm, pioneering continuous security assessment methodologies and leading investigations into some of the world's most significant breaches—including the initial discovery and analysis of NSO Group's Pegasus spyware.\n\nEarlier in his career, Cris was one of the original members of Google's Chrome Security Team, where his work in browser hardening, automated vulnerability discovery, and incident response helped lay the foundation for Google's Project Zero and the Open Source Software Security Team. He also led breach investigations at Neohapsis (now Cisco Systems), including the Heartland Payment Systems compromise.\n\nCris's research has resulted in public advisories for remotely exploitable vulnerabilities in Microsoft Windows, Internet Explorer, Chrome, Cisco WebEx, and court-approved law enforcement investigative tools. He co-created the Chrome Vulnerability Rewards Program, a model adopted across the industry. In addition to frequent speaking engagements at top security conferences, Cris has contributed to academia as a curriculum advisory board member and adjunct professor at DePaul University's cybersecurity graduate program, developing and teaching one of the first graduate-level courses on application assessment and exploit development.")}
+                      className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                    >
                       <Download className="w-4 h-4 mr-1" />
                       Copy
                     </button>
                   </div>
-                  <p className="text-gray-600 text-sm">
-                    <p><strong>Cris Neckar</strong> is a Partner at Two Bear Capital, an advisor to a diverse set of startups, and a 
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    <p className="text-gray-600 leading-relaxed text-sm">Cris Neckar is a Partner at Two Bear Capital, an advisor to a diverse set of startups, and a 
                     veteran of more than two decades in the information security industry. He invests at the intersection of cybersecurity, 
                     advanced technologies, and life sciences, bringing deep technical expertise to high-impact opportunities.</p>
-
-                    <p>Prior to joining Two Bear Capital, Cris served as Chief Information Security Officer at Spring Labs, where he built 
+                    <p className="text-gray-600 leading-relaxed text-sm">Prior to joining Two Bear Capital, Cris served as Chief Information Security Officer at Spring Labs, where he built 
                       comprehensive security, compliance, and product security programs for a decentralized data tokenization platform. He 
                       co-founded Divergent Security, a top-tier offensive cybersecurity assessment firm, pioneering continuous security assessment 
                       methodologies and leading investigations into some of the world’s most significant breaches—including the initial discovery 
                       and analysis of NSO Group’s Pegasus spyware.</p>
-
-                    <p>Earlier in his career, Cris was one of the original members of Google’s Chrome Security Team, where his work in browser 
+                    <p className="text-gray-600 leading-relaxed text-sm">Earlier in his career, Cris was one of the original members of Google’s Chrome Security Team, where his work in browser 
                       hardening, automated vulnerability discovery, and incident response helped lay the foundation for Google’s Project Zero 
                       and the Open Source Software Security Team. He also led breach investigations at Neohapsis (now Cisco Systems), including 
                       the Heartland Payment Systems compromise.</p>
-
-                    <p>Cris’s research has resulted in public advisories for remotely exploitable vulnerabilities in Microsoft Windows, Internet 
-                      Explorer, Chrome, Cisco WebEx, and court-approved law enforcement investigative tools. He co-created the Chrome Vulnerability 
-                      Rewards Program, a model adopted across the industry. In addition to frequent speaking engagements at top security conferences, 
+                    <p className="text-gray-600 leading-relaxed text-sm">Cris’s research has resulted in public advisories for remotely exploitable vulnerabilities in Microsoft Windows, Internet 
+                      Explorer, Chrome, Cisco WebEx, and court-approved law enforcement investigative tools. He contributed to creation of the Chrome Vulnerability 
+                      Rewards Program, and the Pwnium exploitation competition, a model adopted across the industry. In addition to frequent speaking engagements at top security conferences, 
                       Cris has contributed to academia as a curriculum advisory board member and adjunct professor at DePaul University’s cybersecurity 
                       graduate program, developing and teaching one of the first graduate-level courses on application assessment and exploit development.</p>
                   </p>
-                  <button className="text-blue-600 hover:text-blue-700 text-sm mt-2">Read full bio</button>
+                  <a
+                    href="/files/Cris-Neckar-1-Pager-Bio.pdf"  
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                  >
+                  <button className="text-blue-600 hover:text-blue-700 text-sm mt-2">Download 1-Pager Bio</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -393,41 +480,83 @@ function App() {
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
                   <h4 className="font-semibold text-gray-900 mb-4">Headshots Approved for Media Use</h4>
                   <div className="grid grid-cols-2 gap-4 mb-4">
-                    <img 
-                      src="/img/cn.jpg" 
-                      alt="Default Casual Headshot"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
-                    <img 
-                      src="/img/cn1.jpg" 
-                      alt="Default Formal Headshot"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
-                    <img 
-                      src="/img/cn2.webp" 
-                      alt="Casual Headshot"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
-                    <img 
-                      src="/img/cn4.jpg" 
-                      alt="Action Shot"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
-                    <img 
-                      src="/img/cn5.jpg" 
-                      alt="Personal Touch"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
-                    <img 
-                      src="/img/ai.jpg" 
-                      alt="Approved AI Headshot"
-                      className="w-full h-24 object-cover rounded-lg"
-                    />
+                    <a 
+                      href="/img/cn.jpg" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/cn.jpg" 
+                        alt="Default Casual Headshot"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <a 
+                      href="/img/cn1.jpg" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/cn1.jpg" 
+                        alt="Default Formal Headshot"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <a 
+                      href="/img/cn2.webp" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/cn2.webp" 
+                        alt="Casual Headshot"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <a 
+                      href="/img/cn4.jpg" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/cn4.jpg" 
+                        alt="Action Shot"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <a 
+                      href="/img/cn5.jpg" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/cn5.jpg" 
+                        alt="Personal Touch"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
+                    <a 
+                      href="/img/ai.jpg" 
+                      download
+                      className="aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    >
+                      <img 
+                        src="/img/ai.jpg" 
+                        alt="Approved AI Headshot"
+                        className="w-full h-full object-cover"
+                      />
+                    </a>
                   </div>
+                  <a
+                    href="/files/media.zip"  
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                  >
                   <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
                     <Download className="w-4 h-4 mr-1" />
                     Download High-Res Images
-                  </button>
+                  </button></a>
                 </div>
                 
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
@@ -436,7 +565,7 @@ function App() {
                     <li>• Cybersecurity Trends</li>
                     <li>• Post-Quantum Cryptography</li>
                     <li>• Supply Chain Security</li>
-                    <li>• Incident Response Strategies</li>
+                    <li>• Cybersecurity Incidents</li>
                     <li>• Vulnerability Research</li>
                     <li>• Browser Security</li>
                     <li>• Zero-Trust Architectures</li>
@@ -445,15 +574,15 @@ function App() {
                     <li>• Emerging Threat Landscapes</li>
                   </ul>
                   <a
-                    href="/files/Cris-Neckar-1-Pager-Bio.pdf"  // path to your PDF
+                    href="/files/Cris-Neckar-1-Pager-Bio.pdf"  
                     target="_blank"
                     rel="noopener"
                     className="inline-flex items-center text-blue-600 hover:text-blue-700"
-                  ></a>
+                  >
                   <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
                     <Download className="w-4 h-4 mr-1" />
                     Download Speaker Sheet
-                  </button>
+                  </button></a>
                 </div>
               </div>
             </div>

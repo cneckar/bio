@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Download, Mail, Linkedin } from 'lucide-react';
+import { ExternalLink, Download, Mail, Linkedin, PresentationIcon } from 'lucide-react';
 
 function App() {
   const scrollToSection = (id: string) => {
@@ -12,7 +12,7 @@ function App() {
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold text-gray-900">Your Name</h1>
+            <h1 className="text-xl font-bold text-gray-900">Cris Neckar</h1>
             <div className="hidden md:flex space-x-8">
               <button 
                 onClick={() => scrollToSection('about')}
@@ -51,21 +51,21 @@ function App() {
               </p>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/crisneckar/" 
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   <Linkedin className="w-5 h-5 mr-2" />
                   LinkedIn
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.crunchbase.com/person/cris-neckar-a44f" 
                   className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
                   Crunchbase
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.twobearcapital.com/team/cris-neckar" 
                   className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
@@ -76,7 +76,7 @@ function App() {
             <div className="flex justify-center">
               <div className="w-80 h-80 bg-gray-300 rounded-2xl flex items-center justify-center">
                 <img 
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" 
+                  src="./img/cn5.jpg" 
                   alt="Professional headshot"
                   className="w-full h-full object-cover rounded-2xl"
                 />
@@ -93,19 +93,28 @@ function App() {
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About</h2>
             <div className="prose prose-lg mx-auto text-gray-600">
               <p className="text-xl leading-relaxed mb-6">
-                With over a decade of experience in venture capital and strategic investments, 
-                I focus on identifying and supporting companies that are reshaping industries 
-                through innovation and sustainable practices.
+              Cris Neckar is a Partner at Two Bear Capital, where he invests in cybersecurity, advanced technologies, 
+              and the intersection of tech and life sciences. A 20-year veteran of the information security industry, 
+              Cris has led groundbreaking work in vulnerability research, offensive security, and incident response.
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                My investment philosophy centers on backing exceptional founders who are building 
-                scalable solutions to complex global challenges. I have a particular interest in 
-                enterprise software, fintech, and climate technology sectors.
+              He previously served as Chief Information Security Officer for Spring Labs, leveraging decentralized 
+              technology to solve complex problems in data sovereignty and security. As co-founder of Divergent Security, 
+              he pioneered continuous offensive assessment services and played a pivotal role in the initial discovery 
+              and analysis of NSO Group’s Pegasus spyware.
               </p>
               <p className="text-lg leading-relaxed">
-                Prior to my investment career, I founded and successfully exited two technology 
-                companies, giving me unique insight into the entrepreneurial journey from both 
-                sides of the table.
+              Earlier in his career, Cris was one of the original members of Google’s Chrome Security Team, contributing 
+              to advancements in browser hardening, attack mitigation, automated vulnerability discovery, and the exposure 
+              of nation-state campaigns—work that helped lay the foundation for Google’s Project Zero. He began his career 
+              at Neohapsis (now Cisco Systems), where he led the reverse engineering effort during the investigation of 
+              the Heartland Payment Systems breach, then the largest breach in history.
+              </p>
+              <p className="text-lg leading-relaxed">
+              Cris’s research is widely cited in the security community, and he has spoken at major technical conferences 
+              around the world. He has also served as a curriculum advisory board member and adjunct professor at DePaul 
+              University, developing one of the first graduate-level courses in application security assessment and exploit 
+              development.
               </p>
             </div>
           </div>
@@ -119,23 +128,93 @@ function App() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Recent Articles</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">Publications</h3>
               <div className="space-y-4">
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-900 mb-2">The Future of Climate Tech Investing</h4>
-                  <p className="text-gray-600 text-sm mb-3">TechCrunch • March 2024</p>
-                  <p className="text-gray-600">Analysis of emerging trends in climate technology investments and market opportunities.</p>
-                  <a href="#" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                  <h4 className="font-semibold text-gray-900 mb-2">Technical Analysis of the Pegasus Exploits on iOS (Trident)</h4>
+                  <p className="text-gray-600 text-sm mb-3">Lookout • August 2016</p>
+                  <p className="text-gray-600">
+                    Deep dive into the Trident exploit chain and Pegasus spyware: exploitation primitives, payload staging, and post-exploitation behaviors.
+                  </p>
+                  <a href="https://info.lookout.com/rs/051-ESQ-475/images/pegasus-exploits-technical-details.pdf" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
                     Read more <ExternalLink className="w-4 h-4 ml-1" />
                   </a>
                 </div>
-                
+
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-900 mb-2">Building Resilient Startups</h4>
-                  <p className="text-gray-600 text-sm mb-3">Harvard Business Review • January 2024</p>
-                  <p className="text-gray-600">Strategies for entrepreneurs to build sustainable, profitable businesses in uncertain times.</p>
-                  <a href="#" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                  <h4 className="font-semibold text-gray-900 mb-2">Fuzzing for Security</h4>
+                  <p className="text-gray-600 text-sm mb-3">Chromium Blog • April 2012</p>
+                  <p className="text-gray-600">
+                    Foundational post on Google’s scaled fuzzing infrastructure and methodology that later powered ClusterFuzz and thousands of bug discoveries.
+                  </p>
+                  <a href="https://blog.chromium.org/2012/04/fuzzing-for-security.html" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
                     Read more <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Treasure and Tragedy in <code>kmem_cache</code> Mining for Live Forensics Investigation</h4>
+                  <p className="text-gray-600 text-sm mb-3">DFRWS • 2010</p>
+                  <p className="text-gray-600">
+                    Research on leveraging Linux kernel slab caches for live forensics—what structures are recoverable, evidentiary value, and pitfalls.
+                  </p>
+                  <a href="https://dfrws.org/sites/default/files/session-files/2010_USA_paper-treasure_and_tragedy_in_kmem_cache_mining_for_live_forensics_investigation.pdf" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Read more <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">PII in the Sky: Maintaining Cloud Control when Access Extends Beyond the Service Edge</h4>
+                  <p className="text-gray-600 text-sm mb-3">ISC² Security Congress • October 2023</p>
+                  <p className="text-gray-600">
+                    Practical patterns for governing identity, access, and data boundaries across multi-tenant cloud and third-party integrations.
+                  </p>
+                  <a href="https://events.isc2.org/sessions/2602/view" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Watch/Details <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Trading Least Privilege for Security Theater</h4>
+                  <p className="text-gray-600 text-sm mb-3">Enterprise Security Weekly • October 2020</p>
+                  <p className="text-gray-600">
+                    A critique of superficial access controls and how to align privilege models with actual threat models and operational realities.
+                  </p>
+                  <a href="https://www.youtube.com/watch?v=y0j6TdRtCFs" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Watch talk <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Smashing the Blockchain</h4>
+                  <p className="text-gray-600 text-sm mb-3">BSides New Orleans • May 2018</p>
+                  <p className="text-gray-600">
+                    Offensive techniques and systemic weaknesses in early blockchain stacks; threat-modeling smart contracts and supporting infra.
+                  </p>
+                  <a href="https://www.slideshare.net/CrisNeckar/bsides-new-orleans-2018-smashing-the-blockchain" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Slides <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Forensic Fail</h4>
+                  <p className="text-gray-600 text-sm mb-3">THOTCON 0x01 • April 2010</p>
+                  <p className="text-gray-600">
+                    Demonstration of how forensic tooling can be subverted—malicious payloads targeting investigator workflows and chain-of-custody risks.
+                  </p>
+                  <a href="https://www.thotcon.org/archive/0x1presos/08_THOTCON_0x1-Forensic_Fail-Neckar-Ose.pdf" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Slides <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">So Long, and Thanks For All the Clock Cycles</h4>
+                  <p className="text-gray-600 text-sm mb-3">Hacker Halted • September 2009</p>
+                  <p className="text-gray-600">
+                    Early reflections on exploitation, mitigation, and the changing economics of vulnerability discovery and disclosure.
+                  </p>
+                  <a href="https://www.nullmethod.com/talk/2009/09/20/hacker-halted-2009/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Overview <ExternalLink className="w-4 h-4 ml-1" />
                   </a>
                 </div>
               </div>
@@ -145,22 +224,83 @@ function App() {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Media Coverage</h3>
               <div className="space-y-4">
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-900 mb-2">Featured on Bloomberg Tech</h4>
-                  <p className="text-gray-600 text-sm mb-3">Bloomberg • February 2024</p>
-                  <p className="text-gray-600">Discussion on the state of venture capital and emerging investment trends.</p>
-                  <a href="#" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
-                    Watch interview <ExternalLink className="w-4 h-4 ml-1" />
+                  <h4 className="font-semibold text-gray-900 mb-2">QuSecure raises additional Series A led by Two Bear Capital</h4>
+                  <p className="text-gray-600 text-sm mb-3">QuSecure Newsroom • February 2025</p>
+                  <p className="text-gray-600">
+                    QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures.
+                  </p>
+                  <a href="https://www.qusecure.com/qusecure-closes-additional-series-a-funding-led-by-two-bear-capital-with-participation-from-accenture/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Read announcement <ExternalLink className="w-4 h-4 ml-1" />
                   </a>
                 </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Security Conversations: Early days of securing Chrome</h4>
+                  <p className="text-gray-600 text-sm mb-3">Security Conversations • November 2024</p>
+                  <p className="text-gray-600">
+                    Long-form interview on browser security, nation-state ops, and the path from researcher to investor.
+                  </p>
+                  <a href="https://securityconversations.com/episode/cris-neckar-on-the-early-days-of-securing-chrome-chasing-browser-exploits/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Listen <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Binarly closes $10.5M seed led by Two Bear Capital</h4>
+                  <p className="text-gray-600 text-sm mb-3">Binarly • March 2024</p>
+                  <p className="text-gray-600">
+                    Funding to scale Binarly’s software supply chain and firmware security platform; Two Bear Capital leads the round.
+                  </p>
+                  <a href="https://www.binarly.io/news/software-supply-chain-security-leader-binarly-closes-10-5-million-financing-led-by-two-bear-capital" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Read press release <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
                 
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-900 mb-2">Forbes 30 Under 30 Alumni</h4>
-                  <p className="text-gray-600 text-sm mb-3">Forbes • 2019</p>
-                  <p className="text-gray-600">Recognized for contributions to venture capital and entrepreneurship.</p>
-                  <a href="#" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
-                    Read profile <ExternalLink className="w-4 h-4 ml-1" />
+                  <h4 className="font-semibold text-gray-900 mb-2">Dymium funding roundup coverage</h4>
+                  <p className="text-gray-600 text-sm mb-3">SecurityWeek • March 2024</p>
+                  <p className="text-gray-600">
+                  Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding.
+                  </p>
+                  <a href="https://www.securityweek.com/dymium-snags-7m-to-build-data-security-platform-with-secure-ai-chat/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Read coverage <ExternalLink className="w-4 h-4 ml-1" />
                   </a>
                 </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Trading Least Privilege for Security Theater</h4>
+                  <p className="text-gray-600 text-sm mb-3">Enterprise Security Weekly (ESW #201) • October 2020</p>
+                  <p className="text-gray-600">
+                    Podcast segment on aligning privilege models with real-world threats and operations.
+                  </p>
+                  <a href="https://www.scworld.com/podcast-segment/8789-trading-least-privilege-for-security-theater-cris-neckar-esw-201" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Listen <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Hello Whitefish: Hacking life & Two Bear Capital</h4>
+                  <p className="text-gray-600 text-sm mb-3">Podcast • February 2024</p>
+                  <p className="text-gray-600">
+                    Conversational episode on careers in security, AI, and building in Montana.
+                  </p>
+                  <a href="https://hellowhitefishmt.podbean.com/e/hello-whitefish-cris-neckar-two-bear-capitol-episode-14/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Listen <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h4 className="font-semibold text-gray-900 mb-2">Feature: Hacking into the Flathead</h4>
+                  <p className="text-gray-600 text-sm mb-3">Flathead Beacon • November 2020</p>
+                  <p className="text-gray-600">
+                    Profile of Cris Neckar’s path from security researcher to executive and investor in Whitefish, MT.
+                  </p>
+                  <a href="https://flatheadbeacon.com/2020/11/06/hacking-into-the-flathead/" target="_blank" rel="noopener" className="inline-flex items-center text-blue-600 hover:text-blue-700 mt-2">
+                    Read story <ExternalLink className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
@@ -186,9 +326,10 @@ function App() {
                     </button>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    Investor and entrepreneur with 10+ years in venture capital. Partner at Two Bear Capital, 
-                    focusing on enterprise software and climate tech. Previously founded two successful startups. 
-                    Featured in Forbes 30 Under 30.
+                    Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity and advanced technology. A 20-year 
+                    security veteran, he has led groundbreaking vulnerability research, co-founded Divergent Security, served 
+                    as CISO of Spring Labs, and was an original member of Google’s Chrome Security Team uncovering nation-state 
+                    and criminal campaigns.
                   </p>
                 </div>
                 
@@ -201,12 +342,13 @@ function App() {
                     </button>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    A seasoned investor and entrepreneur with over a decade of experience in venture capital, 
-                    specializing in enterprise software, fintech, and climate technology. As a Partner at Two Bear Capital, 
-                    they manage a portfolio of 50+ companies with $500M+ in assets under management. Previously founded 
-                    and successfully exited two technology companies. Regular contributor to TechCrunch and Harvard Business Review, 
-                    and featured speaker at major industry conferences. Recognized in Forbes 30 Under 30 for contributions to 
-                    venture capital and entrepreneurship.
+                  Cris Neckar is a Partner at Two Bear Capital, investing in cybersecurity, advanced technologies, and the 
+                  intersection of tech and life sciences. A 20-year veteran of the information security industry, he has served 
+                  as CISO of Spring Labs, co-founded Divergent Security, and was an original member of Google’s Chrome Security 
+                  Team, where his work helped lay the foundation for Project Zero. Cris has led investigations into major breaches, 
+                  including the Heartland Payment Systems incident and the discovery of NSO Group’s Pegasus spyware. He frequently 
+                  speaks at leading security conferences and has taught graduate-level courses on application security and exploit 
+                  development.
                   </p>
                 </div>
                 
@@ -219,10 +361,26 @@ function App() {
                     </button>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    A distinguished investor and entrepreneur with over a decade of transformative experience in venture capital, 
-                    specializing in enterprise software, fintech, and climate technology investments. As a Partner at Two Bear Capital, 
-                    they lead investment strategies for a diverse portfolio of 50+ companies, managing over $500M in assets under management 
-                    and achieving 12 successful exits to date...
+                    <p><strong>Cris Neckar</strong> is a Partner at Two Bear Capital, an advisor to a diverse set of startups, and a 
+                    veteran of more than two decades in the information security industry. He invests at the intersection of cybersecurity, 
+                    advanced technologies, and life sciences, bringing deep technical expertise to high-impact opportunities.</p>
+
+                    <p>Prior to joining Two Bear Capital, Cris served as Chief Information Security Officer at Spring Labs, where he built 
+                      comprehensive security, compliance, and product security programs for a decentralized data tokenization platform. He 
+                      co-founded Divergent Security, a top-tier offensive cybersecurity assessment firm, pioneering continuous security assessment 
+                      methodologies and leading investigations into some of the world’s most significant breaches—including the initial discovery 
+                      and analysis of NSO Group’s Pegasus spyware.</p>
+
+                    <p>Earlier in his career, Cris was one of the original members of Google’s Chrome Security Team, where his work in browser 
+                      hardening, automated vulnerability discovery, and incident response helped lay the foundation for Google’s Project Zero 
+                      and the Open Source Software Security Team. He also led breach investigations at Neohapsis (now Cisco Systems), including 
+                      the Heartland Payment Systems compromise.</p>
+
+                    <p>Cris’s research has resulted in public advisories for remotely exploitable vulnerabilities in Microsoft Windows, Internet 
+                      Explorer, Chrome, Cisco WebEx, and court-approved law enforcement investigative tools. He co-created the Chrome Vulnerability 
+                      Rewards Program, a model adopted across the industry. In addition to frequent speaking engagements at top security conferences, 
+                      Cris has contributed to academia as a curriculum advisory board member and adjunct professor at DePaul University’s cybersecurity 
+                      graduate program, developing and teaching one of the first graduate-level courses on application assessment and exploit development.</p>
                   </p>
                   <button className="text-blue-600 hover:text-blue-700 text-sm mt-2">Read full bio</button>
                 </div>
@@ -233,16 +391,36 @@ function App() {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Media Assets</h3>
               <div className="space-y-6">
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h4 className="font-semibold text-gray-900 mb-4">Professional Headshots</h4>
+                  <h4 className="font-semibold text-gray-900 mb-4">Headshots Approved for Media Use</h4>
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <img 
-                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" 
-                      alt="Professional headshot 1"
+                      src="/img/cn.jpg" 
+                      alt="Default Casual Headshot"
                       className="w-full h-24 object-cover rounded-lg"
                     />
                     <img 
-                      src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" 
-                      alt="Professional headshot 2"
+                      src="/img/cn1.jpg" 
+                      alt="Default Formal Headshot"
+                      className="w-full h-24 object-cover rounded-lg"
+                    />
+                    <img 
+                      src="/img/cn2.webp" 
+                      alt="Casual Headshot"
+                      className="w-full h-24 object-cover rounded-lg"
+                    />
+                    <img 
+                      src="/img/cn4.jpg" 
+                      alt="Action Shot"
+                      className="w-full h-24 object-cover rounded-lg"
+                    />
+                    <img 
+                      src="/img/cn5.jpg" 
+                      alt="Personal Touch"
+                      className="w-full h-24 object-cover rounded-lg"
+                    />
+                    <img 
+                      src="/img/ai.jpg" 
+                      alt="Approved AI Headshot"
                       className="w-full h-24 object-cover rounded-lg"
                     />
                   </div>
@@ -255,12 +433,23 @@ function App() {
                 <div className="bg-white p-6 rounded-lg shadow-sm border">
                   <h4 className="font-semibold text-gray-900 mb-3">Speaking Topics</h4>
                   <ul className="space-y-2 text-gray-600 text-sm mb-4">
-                    <li>• The Future of Venture Capital</li>
-                    <li>• Climate Tech Investment Opportunities</li>
-                    <li>• Building Resilient Startups</li>
-                    <li>• Enterprise Software Trends</li>
-                    <li>• Sustainable Business Models</li>
+                    <li>• Cybersecurity Trends</li>
+                    <li>• Post-Quantum Cryptography</li>
+                    <li>• Supply Chain Security</li>
+                    <li>• Incident Response Strategies</li>
+                    <li>• Vulnerability Research</li>
+                    <li>• Browser Security</li>
+                    <li>• Zero-Trust Architectures</li>
+                    <li>• Venture Capital in Cybersecurity</li>
+                    <li>• Building Security Startups</li>
+                    <li>• Emerging Threat Landscapes</li>
                   </ul>
+                  <a
+                    href="/files/Cris-Neckar-1-Pager-Bio.pdf"  // path to your PDF
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700"
+                  ></a>
                   <button className="inline-flex items-center text-blue-600 hover:text-blue-700">
                     <Download className="w-4 h-4 mr-1" />
                     Download Speaker Sheet
@@ -279,15 +468,14 @@ function App() {
             <div>
               <h3 className="text-xl font-semibold mb-4">Get In Touch</h3>
               <p className="text-gray-300 mb-6">
-                Interested in discussing investment opportunities, speaking engagements, 
-                or media inquiries? I'd love to hear from you.
+              From venture bets to browser exploits - if you’ve got something interesting, I’d love to hear about it.
               </p>
               <a 
-                href="mailto:contact@yourname.com" 
+                href="mailto:cris+bio@twobearcapital.com" 
                 className="inline-flex items-center text-blue-400 hover:text-blue-300"
               >
                 <Mail className="w-5 h-5 mr-2" />
-                contact@yourname.com
+                cris@twobearcapital.com
               </a>
             </div>
             
@@ -295,23 +483,27 @@ function App() {
               <h3 className="text-xl font-semibold mb-4">Connect</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/cris-neckar/" 
                   className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition-colors"
                 >
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <a 
-                  href="#" 
-                  className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition-colors"
+                  href="https://www.twobearcapital.com/contact" 
+                  className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition-colors group relative"
+                  title="Pitch Me"
                 >
-                  <ExternalLink className="w-6 h-6" />
+                  <PresentationIcon className="w-6 h-6" />
+                  <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    Pitch Me
+                  </span>
                 </a>
               </div>
             </div>
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Cris Neckar. All rights reserved.</p>
           </div>
         </div>
       </footer>

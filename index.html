@@ -6,11 +6,16 @@
     <meta name="description" content="Media assets for Cris Neckar: Partner at Two Bear Capital, veteran security researcher, and former Google Chrome Security Team member. Publications, media, investments, and contact." />
     <link rel="canonical" href="https://crisneckar.vc/" />
     <!-- Favicons -->
-    <link rel="icon" href="/favicon.png" sizes="any" />
+    <link rel="icon" href="/img/favicon.png" sizes="any" />
     <link rel="icon" href="/img/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/img/favicon.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- License -->
+    <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+    <meta name="copyright" content="© Cris Neckar">
+    <meta name="license" content="CC BY 4.0">
 
     <!-- Robots --><!-- Robots -->
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
@@ -41,15 +46,25 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Cris Neckar",
+      "alternateName": ["C. Neckar", "Christopher Neckar", "Christopher Daniel Neckar"],
       "url": "https://crisneckar.vc/",
       "jobTitle": "Partner",
       "worksFor": {"@type": "Organization", "name": "Two Bear Capital"},
+      "knowsAbout": [
+        "browser security",
+        "post-quantum cryptography",
+        "supply chain security",
+        "reverse engineering",
+        "vulnerability research",
+        "venture capital"
+      ],
       "sameAs": [
         "https://www.linkedin.com/in/crisneckar/",
-        "https://www.crunchbase.com/person/cris-neckar-a44f"
+        "https://www.crunchbase.com/person/cris-neckar-a44f",
+        "https://github.com/crisneckar"
       ],
       "image": "https://crisneckar.vc/img/cn5.jpg",
-      "description": "Partner at Two Bear Capital and veteran security researcher; former Google Chrome Security Team member."
+      "description": "Security researcher turned venture investor; original Chrome Security Team; Partner at Two Bear Capital."
     }
     </script>
 
@@ -61,9 +76,130 @@
       "url": "https://crisneckar.vc/"
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Selected Vulnerabilities by Cris Neckar",
+      "itemListElement": [
+        {
+          "@type": "CreativeWork",
+          "identifier": "CVE-2018-17568",
+          "about": "ViaBTC Exchange Server memory corruption",
+          "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17568"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "CVE-2017-6753",
+          "about": "Cisco WebEx remote command execution",
+          "url": "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "CVE-2015-0059",
+          "about": "Microsoft Windows memory corruption",
+          "url": "https://technet.microsoft.com/library/security/dn903755.aspx"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "CVE-2013-0917",
+          "about": "Google Chrome memory corruption",
+          "url": "http://googlechromereleases.blogspot.com/2013/03/stable-channel-update_26.html"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Publications by Cris Neckar",
+      "itemListElement": [
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Technical Analysis of the Pegasus Exploits on iOS (Trident)",
+          "author": {"@type": "Person", "name": "Cris Neckar"},
+          "publisher": {"@type": "Organization", "name": "Lookout"},
+          "datePublished": "2016-08",
+          "url": "https://info.lookout.com/rs/051-ESQ-475/images/pegasus-exploits-technical-details.pdf"
+        },
+        {
+          "@type": "Article",
+          "name": "Fuzzing for Security",
+          "author": {"@type": "Person", "name": "Cris Neckar"},
+          "publisher": {"@type": "Organization", "name": "Chromium Blog"},
+          "datePublished": "2012-04",
+          "url": "https://blog.chromium.org/2012/04/fuzzing-for-security.html"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Talks and Media Appearances by Cris Neckar",
+      "itemListElement": [
+        {
+          "@type": "CreativeWork",
+          "name": "PII in the Sky: Maintaining Cloud Control",
+          "author": {"@type": "Person", "name": "Cris Neckar"},
+          "publisher": {"@type": "Organization", "name": "ISC² Security Congress"},
+          "datePublished": "2023-10",
+          "url": "https://events.isc2.org/sessions/2602/view"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Trading Least Privilege for Security Theater",
+          "author": {"@type": "Person", "name": "Cris Neckar"},
+          "publisher": {"@type": "Organization", "name": "Enterprise Security Weekly"},
+          "datePublished": "2020-10",
+          "url": "https://www.youtube.com/watch?v=y0j6TdRtCFs"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google APIs for Workout Tracker -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+    <!-- Chart.js for workout tracker -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Chart.js date adapter -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Pre-rendered content for crawlers -->
+      <div style="display: none" aria-hidden="true">
+        <h1>Cris Neckar</h1>
+        <p>Investor, Entrepreneur, Director, Advisor, Hacker, and Researcher.</p>
+        
+        <h2>About</h2>
+        <p>Cris Neckar is a Partner at Two Bear Capital, where he invests in Cybersecurity, advanced technologies, and the intersection of tech and life sciences. A 20-year veteran of the information security industry, Cris has led groundbreaking work in vulnerability research, offensive security, and incident response.</p>
+        
+        <h2>Publications & Coverage</h2>
+        <ul>
+          <li>Technical Analysis of the Pegasus Exploits on iOS (Trident) - Lookout, August 2016</li>
+          <li>Fuzzing for Security - Chromium Blog, April 2012</li>
+          <li>PII in the Sky: Maintaining Cloud Control - ISC² Security Congress, October 2023</li>
+        </ul>
+
+        <h2>Selected Vulnerability Disclosures</h2>
+        <ul>
+          <li>CVE-2018-17568 - ViaBTC Exchange Server memory corruption</li>
+          <li>CVE-2017-6753 - Cisco WebEx remote command execution</li>
+          <li>CVE-2015-0059 - Microsoft Windows memory corruption</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Email: cris@twobearcapital.com</p>
+        <p>LinkedIn: https://www.linkedin.com/in/crisneckar/</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

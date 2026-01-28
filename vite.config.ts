@@ -12,4 +12,10 @@ export default defineConfig({
     copyPublicDir: true,
   },
   publicDir: 'public',
+  server: {
+    // Serve static files from public directory
+    fs: {
+      allow: ['..']
+    }
+  }
 });

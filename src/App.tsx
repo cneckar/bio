@@ -1,7 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ExternalLink, Download, Mail, Linkedin, PresentationIcon } from 'lucide-react';
+import WorkoutTracker from './WorkoutTracker';
 
 function App() {
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/workout" element={<WorkoutTracker />} />
+        <Route path="/*" element={<BioPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function BioPage() {
   const [vulnPage, setVulnPage] = React.useState(1);
   const [pubPage, setPubPage] = React.useState(1);
   const [coveragePage, setCoveragePage] = React.useState(1);
@@ -255,20 +269,26 @@ function App() {
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Media Coverage</h3>
               <div className="space-y-4">
                 {[
-
+                  {
+                    title: "Revenium closes $13.5M seed round led by Two Bear Capital",
+                    date: "PR Newswire • November 2025",
+                    description: "Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform.",
+                    link: "https://www.prnewswire.com/news-releases/revenium-closes-13-5-million-seed-round-funding-led-by-two-bear-capital-with-participation-from-westwave-capital-302620790.html",
+                    linkText: "Read announcement"
+                  },
+                  {
+                    title: "IEEE Quantum Week 2025 - Panel: Bridging the Human Gap in Quantum Readiness",
+                    date: "IEEE Quantum Week • September 2025",
+                    description: "Panel discussion on human and institutional readiness for quantum technologies, examining challenges in communication, trust-building, and practical deployment across disciplines.",
+                    link: "https://qce.quantum.ieee.org/2025/program/wednesday-schedule/",
+                    linkText: "View panel details"
+                  },
                   {
                     title: "QuSecure raises additional Series A led by Two Bear Capital",
                     date: "QuSecure Newsroom • February 2025",
                     description: "QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures.",
                     link: "https://www.qusecure.com/qusecure-closes-additional-series-a-funding-led-by-two-bear-capital-with-participation-from-accenture/",
                     linkText: "Read announcement"
-                  },
-                  {
-                    title: "IEEE Quantum Week 2025 - Panel: Bridging the Human Gap in Quantum Readiness",
-                    date: "IEEE Quantum Week • 2025",
-                    description: "Panel discussion on human and institutional readiness for quantum technologies, examining challenges in communication, trust-building, and practical deployment across disciplines.",
-                    link: "https://qce.quantum.ieee.org/2025/program/wednesday-schedule/",
-                    linkText: "View panel details"
                   },
                   {
                     title: "Scaling Montana Summit 2024 - Mainstage Speaker",
@@ -333,7 +353,7 @@ function App() {
                 ))}
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-gray-600">
-                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, 9)} - {Math.min(coveragePage * coveragePerPage, 9)} of many articles
+                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, 10)} - {Math.min(coveragePage * coveragePerPage, 10)} of many articles
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -348,10 +368,10 @@ function App() {
                       Previous
                     </button>
                     <button
-                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(9 / coveragePerPage), p + 1))}
-                      disabled={coveragePage >= Math.ceil(9 / coveragePerPage)}
+                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(10 / coveragePerPage), p + 1))}
+                      disabled={coveragePage >= Math.ceil(10 / coveragePerPage)}
                       className={`px-3 py-1 rounded ${
-                        coveragePage >= Math.ceil(9 / coveragePerPage)
+                        coveragePage >= Math.ceil(10 / coveragePerPage)
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-emerald-600 text-white hover:bg-emerald-500'
                       }`}

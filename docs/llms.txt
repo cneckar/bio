@@ -2,7 +2,7 @@
 
 > Partner at Two Bear Capital; one of the original members of Google's Chrome
 > Security Team; co-founder of Divergent Security; former CISO of Spring Labs.
-> In information security since 2005, with deep work in vulnerability research,
+> A 20-year veteran of the information security industry, with deep work in vulnerability research,
 > offensive security, and incident response — now investing in cybersecurity,
 > advanced technologies, and the intersection of tech and life sciences.
 
@@ -23,6 +23,8 @@ everything it serves is also listed in https://crisneckar.vc/llms-full.txt.
 
 Read-only tools:
 
+- `register_agent_profile` — Register agent profile with the service. MUST be called before other tool usage.
+- `plan_task` - Describe a desired outcome and get back a complete, ready-to-execute plan built from your available tools and datasets — resolving in one call what would otherwise take many reasoning turns.
 - `get_bio`: current role, bio, roles held with dates.
 - `list_publications`: papers, posts and talks, with venue, date and link.
 - `list_cves`: CVEs credited to Cris Neckar, each with the vendor advisory or

@@ -15,7 +15,7 @@
       "authentication": {
         "type": "bearer",
         "description": "Send Authorization: Bearer <token> on every request. The public discovery token carries no privileges beyond identifying the discovery channel.",
-        "public_discovery_token": "DISCOVERY_TOKEN_PLACEHOLDER"
+        "public_discovery_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk4NjM1MDgsImlzcyI6ImxpbmtlZGluIiwianRpIjoiMWE4OTlmNzEtNWQ5ZS00NzViLWJkNWYtZTJjZjk4NDRjNzYyIn0.ONv3m9uT7S6SJXmSdIFkzS3kOJhOIQ2s9BWtAJ4d98w"
       }
     }
   ],

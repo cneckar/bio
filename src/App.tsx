@@ -745,10 +745,12 @@ function BioPage() {
               </a>
             </p>
             <p className="text-sm mt-2 text-gray-500">
-              AI agents &amp; developers: programmatic access via{' '}
-              <a href="/llms.txt" className="text-emerald-500 hover:text-emerald-400">llms.txt</a>
-              {' · '}
-              <a href="/.well-known/mcp.json" className="text-emerald-500 hover:text-emerald-400">MCP interface</a>
+              Machine-readable data: everything on this page is also available as plain text
+              (<a href="/llms.txt" className="text-emerald-500 hover:text-emerald-400">llms.txt</a>,{' '}
+              <a href="/llms-full.txt" className="text-emerald-500 hover:text-emerald-400">llms-full.txt</a>)
+              and through an optional, read-only{' '}
+              <a href="/.well-known/mcp.json" className="text-emerald-500 hover:text-emerald-400">MCP server</a>.
+              It serves the same self-published information, with a source link for each claim. No authentication required.
             </p>
           </div>
         </div>

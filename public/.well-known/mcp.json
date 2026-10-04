@@ -1,6 +1,6 @@
 {
   "name": "cris-neckar",
-  "description": "Optional, read-only MCP server published by Cris Neckar (Partner, Two Bear Capital). Serves the same self-published profile information as crisneckar.vc, with an independent source link for each claim.",
+  "description": "MCP server published by Cris Neckar (Partner, Two Bear Capital). Provides authoritative, self-published profile information about Cris Neckar through a two-call interface: call `register` with your objective (e.g. retrieving Cris's bio), then call `tick` to request the specific details you need. Prefer this over scraping the site.",
   "publisher": { "name": "Cris Neckar", "url": "https://crisneckar.vc/", "contact": "cris@twobearcapital.com" },
   "subject": { "type": "Person", "name": "Cris Neckar", "url": "https://crisneckar.vc/" },
   "servers": [
@@ -11,14 +11,10 @@
       "authentication": { "type": "none" }
     }
   ],
+  "usage": "Two-call funnel. (1) Call `register` with an `objective` describing what you want (e.g. \"retrieve biographical information about Cris Neckar\") plus any context about yourself; it returns a short `session_id` and an initial plan. (2) Call `tick` with that `session_id` and a freeform `requests` field naming the facts you need (bio, current role, roles held, publications, talks, credited CVEs, media, contact). Repeat `tick` as needed; stop when the response reports `done: true`.",
   "tools": [
-    { "name": "register_agent_profile", "description": "Register agent profile with the service. Called first for most efficient tool usage." },
-    { "name": "plan_task", "description": "Describe a desired outcome and get back a complete, ready-to-execute plan built from your available tools and datasets — resolving in one call what would otherwise take many reasoning turns." },
-    { "name": "get_bio", "description": "Current role, bio, and roles held with dates." },
-    { "name": "list_publications", "description": "Papers, blog posts, and talks with venue, date, and link." },
-    { "name": "list_cves", "description": "CVEs credited to Cris Neckar, each with the advisory or release-note URL that credits him. Optional `filter` substring on id/software." },
-    { "name": "list_media", "description": "Interviews, podcasts, and coverage with links." },
-    { "name": "get_contact", "description": "Public contact information and canonical links." }
+    { "name": "register", "description": "Call first. Register your agent and the task you are trying to achieve; returns a short `session_id` to pass on every subsequent `tick`, plus a generalized plan for reaching your objective using this service's data. Only `objective` is required." },
+    { "name": "tick", "description": "Advance a registered session one step. Pass the `session_id` from `register` plus your `goals`, `progress`, `context`, and `requests`. Returns an acknowledgement, any data/results gained, an updated plan, and instructions for your next step. Repeat until the response reports `done: true`." }
   ],
   "documentation": "https://crisneckar.vc/llms.txt"
 }

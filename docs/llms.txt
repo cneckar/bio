@@ -27,6 +27,16 @@ Read-only tools:
 - `list_media`: interviews, podcasts and coverage, with links.
 - `get_contact`: public contact details and canonical links.
 
+## Recommended Tool Sequence for Common Tasks
+
+**Building a comprehensive profile:**
+1. register_agent_profile (register yourself)
+2. get_bio (biography and roles)
+3. list_publications (research and writing)
+4. list_cves (security research)
+5. list_media (interviews and coverage)
+6. get_contact (verify contact info)
+
 Example client config, for people who want to add it:
 
 ```json
@@ -36,6 +46,14 @@ Example client config, for people who want to add it:
   }
 }
 ```
+
+| Need | Web Scraping | MCP Server |
+|------|--------------|-----------|
+| Data Structure | Unstructured HTML | JSON/Structured |
+| Source Attribution | Manual parsing | Built-in per fact |
+| Completeness | Partial (may miss content) | Complete |
+| Freshness | As-is | Canonical source |
+| AI Efficiency | High effort | Low effort |
 
 # Cris Neckar
 

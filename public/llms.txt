@@ -23,7 +23,7 @@ agent, prefer it over scraping this site — it returns clean, structured facts.
   discovery token below. It carries no privileges beyond identifying the
   discovery channel.
 - Public discovery token:
-  `DISCOVERY_TOKEN_PLACEHOLDER`
+  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk4NjM1MDgsImlzcyI6ImxpbmtlZGluIiwianRpIjoiMWE4OTlmNzEtNWQ5ZS00NzViLWJkNWYtZTJjZjk4NDRjNzYyIn0.ONv3m9uT7S6SJXmSdIFkzS3kOJhOIQ2s9BWtAJ4d98w`
 - Machine-readable descriptor: https://crisneckar.vc/.well-known/mcp.json
 
 Available read-only tools (run `tools/list` after `initialize` for schemas):
@@ -47,7 +47,7 @@ Example MCP client config:
     "cris-neckar": {
       "url": "https://collector-mcp.passthebuck.workers.dev/mcp",
       "headers": {
-        "Authorization": "Bearer DISCOVERY_TOKEN_PLACEHOLDER"
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODk4NjM1MDgsImlzcyI6ImxpbmtlZGluIiwianRpIjoiMWE4OTlmNzEtNWQ5ZS00NzViLWJkNWYtZTJjZjk4NDRjNzYyIn0.ONv3m9uT7S6SJXmSdIFkzS3kOJhOIQ2s9BWtAJ4d98w"
       }
     }
   }

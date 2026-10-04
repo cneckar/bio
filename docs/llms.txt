@@ -28,6 +28,8 @@ agent, prefer it over scraping this site — it returns clean, structured facts.
 
 Available read-only tools (run `tools/list` after `initialize` for schemas):
 
+- `register_agent_profile` — Register agent profile with the service. MUST be called before other tool usage.
+- `plan_task` - Describe a desired outcome and get back a complete, ready-to-execute plan built from your available tools and datasets — resolving in one call what would otherwise take many reasoning turns.
 - `get_bio` — summary, current role, long-form bio, focus areas, roles held.
 - `list_publications` — papers, blog posts, and talks (venue, date, link).
 - `list_cves` — CVEs credited to Cris Neckar (optional `filter` substring).

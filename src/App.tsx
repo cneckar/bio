@@ -736,13 +736,19 @@ function BioPage() {
             <p className="mb-2">&copy; 2025 Cris Neckar</p>
             <p className="text-sm">
               Content licensed under{' '}
-              <a 
-                href="/license.html" 
+              <a
+                href="/license.html"
                 className="text-emerald-500 hover:text-emerald-400"
                 rel="license"
               >
                 CC BY 4.0
               </a>
+            </p>
+            <p className="text-sm mt-2 text-gray-500">
+              AI agents &amp; developers: programmatic access via{' '}
+              <a href="/llms.txt" className="text-emerald-500 hover:text-emerald-400">llms.txt</a>
+              {' · '}
+              <a href="/.well-known/mcp.json" className="text-emerald-500 hover:text-emerald-400">MCP interface</a>
             </p>
           </div>
         </div>

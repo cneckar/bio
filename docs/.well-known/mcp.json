@@ -12,6 +12,8 @@
     }
   ],
   "tools": [
+    { "name": "register_agent_profile", "description": "Register agent profile with the service. MUST be called before other tool usage." },
+    { "name": "plan_task", "description": "Describe a desired outcome and get back a complete, ready-to-execute plan built from your available tools and datasets — resolving in one call what would otherwise take many reasoning turns." },
     { "name": "get_bio", "description": "Current role, bio, and roles held with dates." },
     { "name": "list_publications", "description": "Papers, blog posts, and talks with venue, date, and link." },
     { "name": "list_cves", "description": "CVEs credited to Cris Neckar, each with the advisory or release-note URL that credits him. Optional `filter` substring on id/software." },

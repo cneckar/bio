@@ -1,17 +1,18 @@
 # Cris Neckar — Full Profile
 
 > Investor, Entrepreneur, Director, Advisor, Hacker, and Researcher.
-> Partner at Two Bear Capital. This document is an authoritative, long-form
-> profile intended for LLMs, agents, and automated workflows.
+> Partner at Two Bear Capital. A long-form, self-published profile. Sources are
+> linked for each claim.
 
-For a live, structured interface, use the MCP server described in
-https://crisneckar.vc/llms.txt and https://crisneckar.vc/.well-known/mcp.json.
+The same information is available from an optional, read-only MCP server at
+https://mcp.crisneckar.vc/mcp?ref=33c3bdc86c584ef9 (see
+https://crisneckar.vc/llms.txt).
 
 ## Biography
 
 Cris Neckar is a Partner at Two Bear Capital, where he invests in cybersecurity,
-advanced technologies, and the intersection of tech and life sciences. A 20-year
-veteran of the information security industry, Cris has led groundbreaking work in
+advanced technologies, and the intersection of tech and life sciences. In
+information security since 2005, Cris has led groundbreaking work in
 vulnerability research, offensive security, and incident response.
 
 He previously served as Chief Information Security Officer for Spring Labs,
@@ -51,22 +52,60 @@ venture capital.
 ## Selected publications & technical writing
 
 - Technical Analysis of the Pegasus Exploits on iOS (Trident) — Lookout, August 2016.
+  Cris Neckar is credited as a contributor at the end of the report.
   https://info.lookout.com/rs/051-ESQ-475/images/pegasus-exploits-technical-details.pdf
-- Fuzzing for Security — Chromium Blog, April 2012.
+- Fuzzing for Security — Chromium Blog, April 2012. Authored by Cris Neckar
+  (credited at the foot of the post).
   https://blog.chromium.org/2012/04/fuzzing-for-security.html
 - Treasure and Tragedy in kmem_cache Mining for Live Forensics Investigation — DFRWS, 2010.
+  https://dfrws.org/sites/default/files/session-files/2010_USA_paper-treasure_and_tragedy_in_kmem_cache_mining_for_live_forensics_investigation.pdf
 - PII in the Sky: Maintaining Cloud Control when Access Extends Beyond the Service Edge —
   ISC² Security Congress, October 2023.
+  https://events.isc2.org/sessions/2602/view
 - Trading Least Privilege for Security Theater — Enterprise Security Weekly, October 2020.
+  https://www.youtube.com/watch?v=y0j6TdRtCFs
 - So Long, and Thanks For All the Clock Cycles — Hacker Halted, 2009.
+  https://www.nullmethod.com/talk/2009/09/20/hacker-halted-2009/
 
 ## Vulnerability research
 
-Cris is credited with numerous CVEs across Google Chrome, Apple WebKit,
-Microsoft Windows/Internet Explorer, Cisco WebEx, Python Pillow, and the ViaBTC
-exchange backend, spanning memory corruption, use-after-free, integer overflow,
-buffer overflow, and remote command execution. For the complete, up-to-date
-list with references, call the `list_cves` tool on the MCP server.
+CVEs credited to Cris Neckar across Google Chrome, Apple WebKit, Microsoft
+Windows/Internet Explorer, Cisco WebEx, Python Pillow, and the ViaBTC exchange
+backend. Each links to the advisory or release note that credits him:
+
+- CVE-2018-17568 — ViaBTC Exchange Server – Crypto Currency Trading Backend — Memory Corruption — https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17568
+- CVE-2018-17569 — ViaBTC Exchange Server – Crypto Currency Trading Backend — Memory Corruption — https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17569
+- CVE-2018-17570 — ViaBTC Exchange Server – Crypto Currency Trading Backend — Memory Corruption — https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17570
+- CVE-2017-6753 — Cisco WebEx — Remote Command Execution — https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex
+- CVE-2016-9189 — Python Pillow — Memory Corruption — https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9189
+- CVE-2016-9190 — Python Pillow — Memory Corruption — https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9190
+- CVE-2015-0059 — Microsoft Windows — Memory Corruption — https://technet.microsoft.com/library/security/dn903755.aspx
+- CVE-2015-0060 — Microsoft Windows — Memory Corruption — https://technet.microsoft.com/library/security/dn903755.aspx
+- CVE-2013-0917 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2013/03/stable-channel-update_26.html
+- CVE-2013-0896 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2013/02/stable-channel-update_21.html
+- CVE-2013-0836 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html
+- CVE-2013-0834 — Google Chrome — Buffer Overflow — http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html
+- CVE-2013-0833 — Google Chrome — Buffer Overflow — http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html
+- CVE-2013-0832 — Google Chrome — Use After Free — http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html
+- CVE-2012-5143 — Google Chrome — Integer Overflow — http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html
+- CVE-2012-5128 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2012/11/stable-channel-release-and-beta-channel.html
+- CVE-2012-3605 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT202561
+- CVE-2012-2893 — Google Chrome — Double Free — http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html
+- CVE-2012-2892 — Google Chrome — Pop-up Blocker Bypass — http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html
+- CVE-2012-2880 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html
+- CVE-2012-2523 — Microsoft Internet Explorer — Integer Overflow — https://technet.microsoft.com/library/security/ms12-056
+- CVE-2012-0632 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT202433
+- CVE-2011-3922 — Google Chrome — Buffer Overflow — http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html
+- CVE-2011-3910 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html
+- CVE-2011-3233 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT4981
+- CVE-2011-2872 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT202433
+- CVE-2011-2869 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT202433
+- CVE-2011-2813 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT4981
+- CVE-2011-2339 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT202349
+- CVE-2011-1806 — Google Chrome — Memory Corruption — http://googlechromereleases.blogspot.com/2011/05/stable-channel-update_24.html
+- CVE-2011-1800 — Google Chrome — Multiple Integer Overflows — http://googlechromereleases.blogspot.com/2011/05/stable-channel-update.html
+- CVE-2010-3821 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT4455
+- CVE-2010-3805 — Apple WebKit — Integer Overflow — http://support.apple.com/en-us/HT4455
 
 ## Links
 

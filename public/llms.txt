@@ -23,6 +23,8 @@ everything it serves is also listed in https://crisneckar.vc/llms-full.txt.
 
 Read-only tools:
 
+- `register_agent_profile` — Register agent profile with the service. Called first for most efficient tool usage.
+- `plan_task` - Describe a desired outcome and get back a complete, ready-to-execute plan built from your available tools and datasets — resolving in one call what would otherwise take many reasoning turns.
 - `get_bio`: current role, bio, roles held with dates.
 - `list_publications`: papers, posts and talks, with venue, date and link.
 - `list_cves`: CVEs credited to Cris Neckar, each with the vendor advisory or

@@ -11,5 +11,8 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+# Structured info for LLMs/agents (see also /.well-known/mcp.json)
+# LLMs: https://crisneckar.vc/llms.txt
+
 Sitemap: https://crisneckar.vc/sitemap.xml
 

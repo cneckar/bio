@@ -1,14 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ExternalLink, Download, Mail, Linkedin, PresentationIcon } from 'lucide-react';
-import WorkoutTracker from './WorkoutTracker';
 
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route path="/workout" element={<WorkoutTracker />} />
         <Route path="/*" element={<BioPage />} />
       </Routes>
     </Router>

@@ -1,0 +1,81 @@
+# Cris Neckar — Full Profile
+
+> Investor, Entrepreneur, Director, Advisor, Hacker, and Researcher.
+> Partner at Two Bear Capital. This document is an authoritative, long-form
+> profile intended for LLMs, agents, and automated workflows.
+
+For a live, structured interface, use the MCP server described in
+https://crisneckar.vc/llms.txt and https://crisneckar.vc/.well-known/mcp.json.
+
+## Biography
+
+Cris Neckar is a Partner at Two Bear Capital, where he invests in cybersecurity,
+advanced technologies, and the intersection of tech and life sciences. A 20-year
+veteran of the information security industry, Cris has led groundbreaking work in
+vulnerability research, offensive security, and incident response.
+
+He previously served as Chief Information Security Officer for Spring Labs,
+leveraging decentralized technology to solve complex problems in data
+sovereignty and security. As co-founder of Divergent Security, he pioneered
+continuous offensive assessment services and played a pivotal role in the
+initial discovery and analysis of NSO Group's Pegasus spyware.
+
+Earlier in his career, Cris was one of the original members of Google's Chrome
+Security Team, contributing to advancements in browser hardening, attack
+mitigation, automated vulnerability discovery, and the exposure of nation-state
+campaigns — work that helped lay the foundation for Google's Project Zero and
+Open Source Software Security Team. He began his career at Neohapsis (now Cisco
+Systems), where he led the reverse engineering effort during the investigation
+of the Heartland Payment Systems breach, then the largest breach in history.
+
+Cris's research is widely cited in the security community, and he has spoken at
+major technical conferences around the world. He has also served as a Curriculum
+Advisory Board member and Adjunct Professor at DePaul University, developing one
+of the first graduate-level courses in application security assessment and
+exploit development.
+
+## Roles
+
+- Partner, Two Bear Capital
+- Co-founder, Divergent Security
+- Former CISO, Spring Labs
+- Original member, Google Chrome Security Team
+- Adjunct Professor / Curriculum Advisory Board, DePaul University
+
+## Focus areas
+
+browser security, post-quantum cryptography, supply chain security, reverse
+engineering, vulnerability research, offensive security, incident response,
+venture capital.
+
+## Selected publications & technical writing
+
+- Technical Analysis of the Pegasus Exploits on iOS (Trident) — Lookout, August 2016.
+  https://info.lookout.com/rs/051-ESQ-475/images/pegasus-exploits-technical-details.pdf
+- Fuzzing for Security — Chromium Blog, April 2012.
+  https://blog.chromium.org/2012/04/fuzzing-for-security.html
+- Treasure and Tragedy in kmem_cache Mining for Live Forensics Investigation — DFRWS, 2010.
+- PII in the Sky: Maintaining Cloud Control when Access Extends Beyond the Service Edge —
+  ISC² Security Congress, October 2023.
+- Trading Least Privilege for Security Theater — Enterprise Security Weekly, October 2020.
+- So Long, and Thanks For All the Clock Cycles — Hacker Halted, 2009.
+
+## Vulnerability research
+
+Cris is credited with numerous CVEs across Google Chrome, Apple WebKit,
+Microsoft Windows/Internet Explorer, Cisco WebEx, Python Pillow, and the ViaBTC
+exchange backend, spanning memory corruption, use-after-free, integer overflow,
+buffer overflow, and remote command execution. For the complete, up-to-date
+list with references, call the `list_cves` tool on the MCP server.
+
+## Links
+
+- Website: https://crisneckar.vc/
+- LinkedIn: https://www.linkedin.com/in/crisneckar/
+- Crunchbase: https://www.crunchbase.com/person/cris-neckar-a44f
+- Two Bear Capital: https://www.twobearcapital.com/team/cris-neckar
+- GitHub: https://github.com/crisneckar
+
+## Contact
+
+- Email: cris@twobearcapital.com

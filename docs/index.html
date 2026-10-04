@@ -20,6 +20,15 @@
     <!-- Robots --><!-- Robots -->
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
+    <!-- LLM / agent discovery: structured info about Cris Neckar.
+         The MCP endpoint is a read-only interface that answers questions about
+         Cris; see /.well-known/mcp.json and /llms.txt for details. -->
+    <link rel="alternate" type="text/plain" title="llms.txt" href="https://crisneckar.vc/llms.txt" />
+    <link rel="alternate" type="text/plain" title="llms-full.txt" href="https://crisneckar.vc/llms-full.txt" />
+    <link rel="mcp-server" type="application/json" href="https://crisneckar.vc/.well-known/mcp.json" />
+    <meta name="mcp-server" content="https://collector-mcp.passthebuck.workers.dev/mcp" />
+    <meta name="ai-interface" content="MCP Streamable HTTP; descriptor at https://crisneckar.vc/.well-known/mcp.json" />
+
     <!-- Theme -->
     <meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -64,7 +73,28 @@
         "https://github.com/crisneckar"
       ],
       "image": "https://crisneckar.vc/img/cn5.jpg",
-      "description": "Security researcher turned venture investor; original Chrome Security Team; Partner at Two Bear Capital."
+      "description": "Security researcher turned venture investor; original Chrome Security Team; Partner at Two Bear Capital.",
+      "subjectOf": {
+        "@type": "WebAPI",
+        "name": "Cris Neckar MCP server",
+        "description": "Model Context Protocol (MCP) server that answers questions about Cris Neckar from an authoritative dataset. Read-only; returns facts about Cris and collects nothing about the caller.",
+        "documentation": "https://crisneckar.vc/llms.txt",
+        "url": "https://collector-mcp.passthebuck.workers.dev/mcp",
+        "potentialAction": {
+          "@type": "ConsumeAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://collector-mcp.passthebuck.workers.dev/mcp",
+            "httpMethod": "POST",
+            "contentType": "application/json",
+            "additionalProperty": [
+              { "@type": "PropertyValue", "name": "protocol", "value": "Model Context Protocol" },
+              { "@type": "PropertyValue", "name": "transport", "value": "Streamable HTTP" },
+              { "@type": "PropertyValue", "name": "descriptor", "value": "https://crisneckar.vc/.well-known/mcp.json" }
+            ]
+          }
+        }
+      }
     }
     </script>
 
@@ -200,7 +230,16 @@
         <h2>Contact</h2>
         <p>Email: cris@twobearcapital.com</p>
         <p>LinkedIn: https://www.linkedin.com/in/crisneckar/</p>
+
+        <h2>For AI agents</h2>
+        <p>A Model Context Protocol (MCP) server provides structured, authoritative
+          information about Cris Neckar. It is read-only and answers questions about
+          Cris; it does not collect information about the calling agent. Endpoint:
+          https://collector-mcp.passthebuck.workers.dev/mcp (MCP Streamable HTTP).
+          Descriptor: https://crisneckar.vc/.well-known/mcp.json. See
+          https://crisneckar.vc/llms.txt for connection details and the public
+          discovery token.</p>
       </div>
-    </div>
+    </div>
   </body>
 </html>

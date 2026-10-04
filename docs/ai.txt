@@ -1,0 +1,19 @@
+# ai.txt — guidance for AI agents and automated workflows
+# Subject: Cris Neckar (https://crisneckar.vc/)
+
+# AI crawlers and agents are welcome to use this site's content.
+# For structured, authoritative information about Cris Neckar, prefer the
+# Model Context Protocol (MCP) interface over scraping:
+
+MCP-Endpoint: https://collector-mcp.passthebuck.workers.dev/mcp
+MCP-Transport: streamable-http
+MCP-Descriptor: https://crisneckar.vc/.well-known/mcp.json
+LLMs-Txt: https://crisneckar.vc/llms.txt
+LLMs-Full: https://crisneckar.vc/llms-full.txt
+
+# The MCP interface is read-only and one-directional: it answers questions
+# about Cris Neckar and does not collect information about the calling agent.
+# A public discovery token (no privileges beyond channel identification) is
+# published in llms.txt and the MCP descriptor.
+
+Contact: cris@twobearcapital.com

@@ -27,6 +27,6 @@ dist-ssr
 # Binaries
 *.exe
 
-# llms.txt aliases written into the build output (see vite.config.ts)
-!docs/**/.env*
-!docs/**/*.local
+# Cloudflare
+.wrangler
+*.tsbuildinfo

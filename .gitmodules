@@ -1,0 +1,3 @@
+[submodule "vendor/404-path-handler"]
+	path = vendor/404-path-handler
+	url = https://github.com/cneckar/404-path-handler

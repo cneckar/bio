@@ -14,8 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # 404-path-handler is private, so the default GITHUB_TOKEN can't fetch the
+      # submodule. Check it out at the pinned commit with a read-only deploy key.
+      - name: Resolve pinned 404-path-handler commit
+        id: lib
+        run: echo "sha=$(git rev-parse HEAD:vendor/404-path-handler)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
         with:
-          submodules: true
+          repository: cneckar/404-path-handler
+          ref: ${{ steps.lib.outputs.sha }}
+          path: vendor/404-path-handler
+          ssh-key: ${{ secrets.PATH_HANDLER_DEPLOY_KEY }}
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:

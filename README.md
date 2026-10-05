@@ -16,4 +16,6 @@ existing checkout.
 - `npm run deploy`: build and deploy
 
 Pushes to `published` deploy through `.github/workflows/deploy.yml`, which needs
-the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
+three repository secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and
+`PATH_HANDLER_DEPLOY_KEY`, the private half of a read-only deploy key on
+cneckar/404-path-handler that the workflow uses to fetch the private submodule.

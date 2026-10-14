@@ -147,8 +147,8 @@ function BioPage() {
               Cris Neckar is a Partner at Two Bear Capital, where he invests in Cybersecurity, advanced technologies, 
               and the intersection of tech and life sciences. A 20-year veteran of the information security industry, 
               Cris has led groundbreaking work in vulnerability research, offensive security, and incident response.
-              He is a board observer at Elisity, the Zero Trust security company that IonQ agreed to acquire in
-              October 2026.
+              He serves as a board observer at Binarly, Dymium, Elisity, PulseData AI, QuSecure, and Revenium.
+              In October 2026, IonQ agreed to acquire Elisity.
               </p>
               <p className="text-lg leading-relaxed mb-6">
               He previously served as Chief Information Security Officer for Spring Labs, leveraging decentralized 

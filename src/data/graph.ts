@@ -170,6 +170,7 @@ export function buildJsonLd(): Node {
       node.additionalType = 'https://www.wikidata.org/wiki/Q631425'; // software vulnerability
       node.identifier = e.id;
     }
+    if (e.alternateName) node.alternateName = e.alternateName;
     if (e.url) node.url = e.url;
     if (e.sameAs) node.sameAs = e.sameAs;
     if (e.description) node.description = e.description;

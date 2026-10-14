@@ -35,6 +35,7 @@ export type EntityType =
 export interface Entity {
   id: string;
   name: string;
+  alternateName?: string[];
   type: EntityType;
   url?: string;
   sameAs?: string[];
@@ -136,6 +137,9 @@ export const ENTITIES: Entity[] = [
   { id: 'accenture-ventures', name: 'Accenture Ventures', type: 'Organization' },
   { id: 'binarly', name: 'Binarly', type: 'Corporation', url: 'https://www.binarly.io/', description: 'Software supply chain and firmware security company.' },
   { id: 'dymium', name: 'Dymium', type: 'Corporation', description: 'Zero-trust data security platform.' },
+  { id: 'pulsedata', name: 'PulseData AI', alternateName: ['pulseData', 'PulseData'], type: 'Corporation', description: 'New York City healthcare data company working with health systems on chronic kidney disease.' },
+  { id: 'bain-capital', name: 'Bain Capital', type: 'Organization', url: 'https://www.baincapital.com/' },
+  { id: 'latham-watkins', name: 'Latham & Watkins', type: 'Organization', url: 'https://www.lw.com/' },
   { id: 'spring-labs', name: 'Spring Labs', type: 'Corporation' },
   { id: 'divergent-security', name: 'Divergent Security', type: 'Corporation', description: 'Offensive cybersecurity assessment firm.' },
   { id: 'google', name: 'Google', type: 'Corporation', url: 'https://www.google.com/' },
@@ -192,6 +196,11 @@ export const ENTITIES: Entity[] = [
 export const RELATIONS: Relation[] = [
   { s: 'cris-neckar', p: 'partnerAt', o: 'two-bear-capital', status: 'current', source: 'https://www.twobearcapital.com/team/cris-neckar' },
   { s: 'cris-neckar', p: 'boardObserverOf', o: 'elisity', status: 'current', source: SELF_SOURCE },
+  { s: 'cris-neckar', p: 'boardObserverOf', o: 'revenium', status: 'current', source: SELF_SOURCE },
+  { s: 'cris-neckar', p: 'boardObserverOf', o: 'binarly', status: 'current', source: SELF_SOURCE },
+  { s: 'cris-neckar', p: 'boardObserverOf', o: 'qusecure', status: 'current', source: SELF_SOURCE },
+  { s: 'cris-neckar', p: 'boardObserverOf', o: 'dymium', status: 'current', source: SELF_SOURCE },
+  { s: 'cris-neckar', p: 'boardObserverOf', o: 'pulsedata', status: 'current', source: SELF_SOURCE },
   { s: 'cris-neckar', p: 'formerCisoOf', o: 'spring-labs', status: 'former', source: SELF_SOURCE },
   { s: 'cris-neckar', p: 'coFounderOf', o: 'divergent-security', source: SELF_SOURCE },
   { s: 'cris-neckar', p: 'formerMemberOf', o: 'chrome-security-team', status: 'former; original member', source: SELF_SOURCE },
@@ -425,12 +434,13 @@ export const COVERAGE: Coverage[] = [
     date: 'PR Newswire • November 2025',
     isoDate: '2025-11',
     publisher: 'pr-newswire',
-    description: 'Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform.',
+    description: 'Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform. Cris Neckar is a board observer of Revenium.',
     link: 'https://www.prnewswire.com/news-releases/revenium-closes-13-5-million-seed-round-funding-led-by-two-bear-capital-with-participation-from-westwave-capital-302620790.html',
     linkText: 'Read announcement',
     relations: [
       { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'revenium', date: '2025-11', detail: '$13.5M seed' },
       { s: 'westwave-capital', p: 'investorIn', o: 'revenium', date: '2025-11', detail: '$13.5M seed' },
+      { s: ME, p: 'boardObserverOf', o: 'revenium', status: 'current', source: SELF_SOURCE },
       { s: 'news-revenium-seed', p: 'publishedBy', o: 'pr-newswire' },
       { s: 'news-revenium-seed', p: 'about', o: 'revenium' },
     ],
@@ -457,12 +467,13 @@ export const COVERAGE: Coverage[] = [
     date: 'QuSecure Newsroom • February 2025',
     isoDate: '2025-02',
     publisher: 'qusecure',
-    description: 'QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures.',
+    description: 'QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures. Cris Neckar is a board observer of QuSecure.',
     link: 'https://www.qusecure.com/qusecure-closes-additional-series-a-funding-led-by-two-bear-capital-with-participation-from-accenture/',
     linkText: 'Read announcement',
     relations: [
       { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'qusecure', date: '2025-02', detail: 'Series A extension; Series A total $28M' },
       { s: 'accenture-ventures', p: 'investorIn', o: 'qusecure', date: '2025-02', detail: 'Series A extension' },
+      { s: ME, p: 'boardObserverOf', o: 'qusecure', status: 'current', source: SELF_SOURCE },
       { s: 'news-qusecure-series-a', p: 'publishedBy', o: 'qusecure' },
       { s: 'news-qusecure-series-a', p: 'about', o: 'qusecure' },
     ],
@@ -504,11 +515,12 @@ export const COVERAGE: Coverage[] = [
     date: 'Binarly • March 2024',
     isoDate: '2024-03',
     publisher: 'binarly',
-    description: "Funding to scale Binarly's software supply chain and firmware security platform; Two Bear Capital leads the round.",
+    description: "Funding to scale Binarly's software supply chain and firmware security platform; Two Bear Capital leads the round. Cris Neckar is a board observer of Binarly.",
     link: 'https://www.binarly.io/news/software-supply-chain-security-leader-binarly-closes-10-5-million-financing-led-by-two-bear-capital',
     linkText: 'Read press release',
     relations: [
       { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'binarly', date: '2024-03', detail: '$10.5M financing' },
+      { s: ME, p: 'boardObserverOf', o: 'binarly', status: 'current', source: SELF_SOURCE },
       { s: 'news-binarly-seed', p: 'publishedBy', o: 'binarly' },
       { s: 'news-binarly-seed', p: 'about', o: 'binarly' },
     ],
@@ -520,11 +532,12 @@ export const COVERAGE: Coverage[] = [
     date: 'SecurityWeek • March 2024',
     isoDate: '2024-03',
     publisher: 'securityweek',
-    description: 'Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding.',
+    description: 'Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding. Cris Neckar is a board observer of Dymium.',
     link: 'https://www.securityweek.com/dymium-snags-7m-to-build-data-security-platform-with-secure-ai-chat/',
     linkText: 'Read coverage',
     relations: [
       { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'dymium', date: '2024-03', detail: '$7M funding' },
+      { s: ME, p: 'boardObserverOf', o: 'dymium', status: 'current', source: SELF_SOURCE },
       { s: 'news-dymium-funding', p: 'publishedBy', o: 'securityweek' },
       { s: 'news-dymium-funding', p: 'about', o: 'dymium' },
     ],
@@ -573,6 +586,24 @@ export const COVERAGE: Coverage[] = [
     relations: [
       { s: ME, p: 'profiledIn', o: 'media-flathead-beacon' },
       { s: 'media-flathead-beacon', p: 'publishedBy', o: 'flathead-beacon' },
+    ],
+  },
+  {
+    id: 'news-pulsedata-series-a',
+    type: 'NewsArticle',
+    title: 'PulseData AI raises $16.5M Series A co-led by Two Bear Capital and Bain Capital',
+    date: 'Latham & Watkins • April 2021',
+    isoDate: '2021-04-21',
+    publisher: 'latham-watkins',
+    description: 'pulseData, which works with health systems to improve outcomes for chronic kidney disease patients, raises a $16.5M Series A co-led by Two Bear Capital and Bain Capital. Cris Neckar is a board observer of PulseData AI.',
+    link: 'https://www.lw.com/en/news/latham-watkins-advises-pulsedata-series-a',
+    linkText: 'Read announcement',
+    relations: [
+      { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'pulsedata', date: '2021-04', detail: 'co-led $16.5M Series A with Bain Capital' },
+      { s: 'bain-capital', p: 'leadInvestorIn', o: 'pulsedata', date: '2021-04', detail: 'co-led $16.5M Series A with Two Bear Capital' },
+      { s: ME, p: 'boardObserverOf', o: 'pulsedata', status: 'current', source: SELF_SOURCE },
+      { s: 'news-pulsedata-series-a', p: 'publishedBy', o: 'latham-watkins' },
+      { s: 'news-pulsedata-series-a', p: 'about', o: 'pulsedata' },
     ],
   },
 ];

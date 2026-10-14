@@ -164,6 +164,13 @@ function BioPage() {
               <div className="space-y-4">
                 {[
                   {
+                    title: "Digital Psychopharmacology: Inducing Reversible Altered States in LLMs via Biomimetic Neuromodulation",
+                    date: "PiHK.AI • September 2026",
+                    description: "Inference-time neuromodulation of LLMs and diffusion models: reversible drug-like states via residual-stream and attention interventions, a placebo-controlled dose-response study, and KV-cache decay as a defensive \"Digital IV\" for runaway agents.",
+                    link: "https://pihk.ai/DigitalPsychopharmacology.pdf",
+                    linkText: "Read paper"
+                  },
+                  {
                     title: "Technical Analysis of the Pegasus Exploits on iOS (Trident)",
                     date: "Lookout • August 2016",
                     description: "Deep dive into the Trident exploit chain and Pegasus spyware: exploitation primitives, payload staging, and post-exploitation behaviors.",
@@ -233,7 +240,7 @@ function BioPage() {
                 ))}
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-gray-600">
-                    Showing {Math.min((pubPage - 1) * pubPerPage + 1, 8)} - {Math.min(pubPage * pubPerPage, 8)} of many publications
+                    Showing {Math.min((pubPage - 1) * pubPerPage + 1, 9)} - {Math.min(pubPage * pubPerPage, 9)} of many publications
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -248,10 +255,10 @@ function BioPage() {
                       Previous
                     </button>
                     <button
-                      onClick={() => setPubPage(p => Math.min(Math.ceil(8 / pubPerPage), p + 1))}
-                      disabled={pubPage >= Math.ceil(8 / pubPerPage)}
+                      onClick={() => setPubPage(p => Math.min(Math.ceil(9 / pubPerPage), p + 1))}
+                      disabled={pubPage >= Math.ceil(9 / pubPerPage)}
                       className={`px-3 py-1 rounded ${
-                        pubPage >= Math.ceil(8 / pubPerPage)
+                        pubPage >= Math.ceil(9 / pubPerPage)
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-emerald-600 text-white hover:bg-emerald-500'
                       }`}

@@ -1,14 +1,19 @@
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
-import { buildHeadHtml } from './src/data/graph.ts';
+import { buildHeadHtml, buildJsonLd, buildText } from './src/data/graph.ts';
 
 // Injects the entity-relationship meta tags and JSON-LD built from
-// src/data/knowledge.ts into <head>, so crawlers that don't run JS see them.
+// src/data/knowledge.ts into <head>, so crawlers that don't run JS see them,
+// and publishes the same data as /relationships.jsonld and /relationships.txt.
 function knowledgeGraph(): Plugin {
   return {
     name: 'knowledge-graph',
     transformIndexHtml(html) {
       return html.replace('<!-- kg:head -->', buildHeadHtml());
+    },
+    generateBundle() {
+      this.emitFile({ type: 'asset', fileName: 'relationships.jsonld', source: JSON.stringify(buildJsonLd(), null, 2) + '\n' });
+      this.emitFile({ type: 'asset', fileName: 'relationships.txt', source: buildText() });
     },
   };
 }

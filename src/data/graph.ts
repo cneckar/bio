@@ -1,6 +1,5 @@
-// Turns src/data/knowledge.ts into machine-readable relationship formats.
-// Pure functions with no DOM access, so both the page and the build
-// (vite.config.ts) can import them.
+// Turns src/data/knowledge.ts into the relationship meta tags and JSON-LD
+// that vite.config.ts injects into <head>.
 
 import {
   COVERAGE,
@@ -119,41 +118,6 @@ function qualifiers(r: Relation): string[] {
 
 export const relationLine = (r: Relation) => [relationText(r), ...qualifiers(r)].join(' | ');
 
-// Relations to show on a page card: everything sourced from that item, plus
-// the item's own explicit relations, minus bookkeeping like publishedBy.
-export function relationsForItem(item: { link: string; relations: Relation[] }): Relation[] {
-  const hidden = new Set(['publishedBy', 'about']);
-  return ALL_RELATIONS.filter(
-    r => !hidden.has(r.p) && (r.source === item.link || item.relations.some(i => i.s === r.s && i.p === r.p && i.o === r.o)),
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Plain text (/relationships.txt and llms consumers)
-// ---------------------------------------------------------------------------
-
-export function buildText(): string {
-  const lines = [
-    '# Cris Neckar — entity relationships',
-    '#',
-    `# Machine-readable list of the relationships between the people, organizations,`,
-    `# publications, news and vulnerabilities on ${SITE}`,
-    '# Format: subject | predicate | object | qualifier: value | ...',
-    '# Qualifiers: date (ISO), status, detail, source (URL supporting the claim).',
-    `# The same data as JSON-LD (schema.org + rdf:Statement): ${SITE}relationships.jsonld`,
-    '',
-    '## Paths (two-hop chains from Cris Neckar)',
-    '',
-    ...paths().map(pathText),
-    '',
-    '## Relations',
-    '',
-    ...ALL_RELATIONS.map(relationLine),
-    '',
-  ];
-  return lines.join('\n');
-}
-
 // ---------------------------------------------------------------------------
 // JSON-LD
 // ---------------------------------------------------------------------------
@@ -229,7 +193,7 @@ export function buildJsonLd(): Node {
 }
 
 // ---------------------------------------------------------------------------
-// HTML (<head> meta tags and pre-rendered crawler text)
+// <head> meta tags
 // ---------------------------------------------------------------------------
 
 const esc = (s: string) =>
@@ -239,21 +203,9 @@ export function buildHeadHtml(): string {
   const json = JSON.stringify(buildJsonLd()).replace(/</g, '\\u003c');
   return [
     '<!-- Entity relationships, generated from src/data/knowledge.ts at build time. -->',
-    `<meta name="kg:format" content="kg:relation = subject | predicate | object | qualifier: value ...; kg:path = two-hop chain from Cris Neckar. Full data: ${SITE}relationships.jsonld and ${SITE}relationships.txt" />`,
-    `<link rel="alternate" type="application/ld+json" title="Entity relationships (JSON-LD)" href="${SITE}relationships.jsonld" />`,
-    `<link rel="alternate" type="text/plain" title="Entity relationships (text)" href="${SITE}relationships.txt" />`,
+    '<meta name="kg:format" content="kg:relation = subject | predicate | object | qualifier: value ... (qualifiers: date, status, detail, source URL); kg:path = two-hop chain from Cris Neckar" />',
     ...paths().map(p => `<meta name="kg:path" content="${esc(pathText(p))}" />`),
     ...ALL_RELATIONS.map(r => `<meta name="kg:relation" content="${esc(relationLine(r))}" />`),
     `<script type="application/ld+json">\n${json}\n</script>`,
   ].join('\n    ');
-}
-
-export function buildBodyHtml(): string {
-  return [
-    '<h2>Relationships</h2>',
-    '<ul>',
-    ...paths().map(p => `  <li>${esc(pathText(p))}</li>`),
-    ...ALL_RELATIONS.map(r => `  <li>${esc(relationLine(r))}</li>`),
-    '</ul>',
-  ].join('\n        ');
 }

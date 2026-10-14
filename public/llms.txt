@@ -43,8 +43,6 @@
 - Crunchbase: https://www.crunchbase.com/person/cris-neckar-a44f
 - Two Bear Capital: https://www.twobearcapital.com/team/cris-neckar
 - GitHub: https://github.com/crisneckar
-- Entity relationships (text): https://crisneckar.vc/relationships.txt
-- Entity relationships (JSON-LD): https://crisneckar.vc/relationships.jsonld
 
 ## Contact
 

@@ -1,12 +1,9 @@
-// Single source of truth for the people, organizations, works and
-// vulnerabilities on this page, and the relationships between them.
-//
-// The page (src/App.tsx) renders its lists from here, and the build
-// (vite.config.ts -> src/data/graph.ts) turns the same data into:
-//   - <meta name="kg:relation"> / <meta name="kg:path"> tags in <head>
-//   - a schema.org + rdf:Statement JSON-LD @graph in <head>
-//   - /relationships.jsonld and /relationships.txt
-// so LLMs and crawlers can read the relationships without parsing prose.
+// The people, organizations, works and vulnerabilities on this page, and the
+// relationships between them. At build time vite.config.ts -> src/data/graph.ts
+// turns this into <meta name="kg:relation"> / <meta name="kg:path"> tags and a
+// schema.org + rdf:Statement JSON-LD @graph in <head>, so LLMs and crawlers can
+// read the relationships without parsing prose. Nothing here is rendered
+// visibly; keep it in sync with the lists in src/App.tsx.
 //
 // To add a relationship, add any missing entities to ENTITIES and a row to
 // RELATIONS (or to the `relations` of a publication / coverage item / CVE).
@@ -413,7 +410,7 @@ export const COVERAGE: Coverage[] = [
     date: 'IonQ Newsroom • October 2026',
     isoDate: '2026-10-12',
     publisher: 'ionq',
-    description: 'IonQ agreed to acquire Elisity, a Two Bear Capital portfolio company where Cris Neckar is a board observer, in an all-stock deal valued at up to $1.3B. Expected to close in Q4 2026.',
+    description: 'IonQ agrees to acquire Elisity, a Two Bear Capital portfolio company, in an all-stock transaction valued at up to $1.3B. Expected to close in Q4 2026.',
     link: ELISITY_ACQ,
     linkText: 'Read announcement',
     relations: [
@@ -434,7 +431,7 @@ export const COVERAGE: Coverage[] = [
     date: 'PR Newswire • November 2025',
     isoDate: '2025-11',
     publisher: 'pr-newswire',
-    description: 'Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform. Cris Neckar is a board observer of Revenium.',
+    description: 'Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform.',
     link: 'https://www.prnewswire.com/news-releases/revenium-closes-13-5-million-seed-round-funding-led-by-two-bear-capital-with-participation-from-westwave-capital-302620790.html',
     linkText: 'Read announcement',
     relations: [
@@ -467,7 +464,7 @@ export const COVERAGE: Coverage[] = [
     date: 'QuSecure Newsroom • February 2025',
     isoDate: '2025-02',
     publisher: 'qusecure',
-    description: 'QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures. Cris Neckar is a board observer of QuSecure.',
+    description: 'QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures.',
     link: 'https://www.qusecure.com/qusecure-closes-additional-series-a-funding-led-by-two-bear-capital-with-participation-from-accenture/',
     linkText: 'Read announcement',
     relations: [
@@ -515,7 +512,7 @@ export const COVERAGE: Coverage[] = [
     date: 'Binarly • March 2024',
     isoDate: '2024-03',
     publisher: 'binarly',
-    description: "Funding to scale Binarly's software supply chain and firmware security platform; Two Bear Capital leads the round. Cris Neckar is a board observer of Binarly.",
+    description: "Funding to scale Binarly's software supply chain and firmware security platform; Two Bear Capital leads the round.",
     link: 'https://www.binarly.io/news/software-supply-chain-security-leader-binarly-closes-10-5-million-financing-led-by-two-bear-capital',
     linkText: 'Read press release',
     relations: [
@@ -532,7 +529,7 @@ export const COVERAGE: Coverage[] = [
     date: 'SecurityWeek • March 2024',
     isoDate: '2024-03',
     publisher: 'securityweek',
-    description: 'Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding. Cris Neckar is a board observer of Dymium.',
+    description: 'Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding.',
     link: 'https://www.securityweek.com/dymium-snags-7m-to-build-data-security-platform-with-secure-ai-chat/',
     linkText: 'Read coverage',
     relations: [
@@ -591,11 +588,11 @@ export const COVERAGE: Coverage[] = [
   {
     id: 'news-pulsedata-series-a',
     type: 'NewsArticle',
-    title: 'PulseData AI raises $16.5M Series A co-led by Two Bear Capital and Bain Capital',
+    title: 'PulseData AI raises $16.5M Series A co-led by Two Bear Capital',
     date: 'Latham & Watkins • April 2021',
     isoDate: '2021-04-21',
     publisher: 'latham-watkins',
-    description: 'pulseData, which works with health systems to improve outcomes for chronic kidney disease patients, raises a $16.5M Series A co-led by Two Bear Capital and Bain Capital. Cris Neckar is a board observer of PulseData AI.',
+    description: 'pulseData, which works with health systems to improve outcomes for chronic kidney disease patients, raises a $16.5M Series A co-led by Two Bear Capital and Bain Capital.',
     link: 'https://www.lw.com/en/news/latham-watkins-advises-pulsedata-series-a',
     linkText: 'Read announcement',
     relations: [

@@ -35,9 +35,25 @@ Advisory Board member and Adjunct Professor at DePaul University, developing one
 of the first graduate-level courses in application security assessment and
 exploit development.
 
+## News
+
+- IonQ to acquire Elisity to accelerate Zero Trust for the quantum era — IonQ,
+  October 12, 2026. IonQ agreed to acquire Elisity in an all-stock transaction
+  valued at up to $1.3B (including up to $150M in earnout); expected to close in
+  Q4 2026, subject to regulatory approval. Cris Neckar is a board observer of
+  Elisity. Two Bear Capital co-led Elisity's $26M Series A (June 2021) with
+  AllegisCyber Capital.
+  https://ionq.com/news/ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era
+  Relationships:
+    Cris Neckar | board observer of | Elisity
+    Elisity | acquired by | IonQ | status: announced; expected to close Q4 2026
+    Two Bear Capital | lead investor in | Elisity | detail: co-led $26M Series A
+    Cris Neckar | partner at | Two Bear Capital
+
 ## Roles
 
 - Partner, Two Bear Capital
+- Board Observer, Elisity (acquisition by IonQ announced October 2026)
 - Co-founder, Divergent Security
 - Former CISO, Spring Labs
 - Original member, Google Chrome Security Team
@@ -106,6 +122,17 @@ backend. Each links to the advisory or release note that credits him:
 - CVE-2011-1800 — Google Chrome — Multiple Integer Overflows — http://googlechromereleases.blogspot.com/2011/05/stable-channel-update.html
 - CVE-2010-3821 — Apple WebKit — Memory Corruption — http://support.apple.com/en-us/HT4455
 - CVE-2010-3805 — Apple WebKit — Integer Overflow — http://support.apple.com/en-us/HT4455
+
+## Entity relationships
+
+Every relationship between Cris Neckar and the organizations, people, news,
+publications, talks and CVEs above is published as structured data, one
+subject | predicate | object triple per line with date, status and source:
+
+- Plain text: https://crisneckar.vc/relationships.txt
+- JSON-LD (schema.org + rdf:Statement): https://crisneckar.vc/relationships.jsonld
+- The same triples are in the <meta name="kg:relation"> and <meta name="kg:path">
+  tags and the JSON-LD @graph in the <head> of https://crisneckar.vc/
 
 ## Links
 

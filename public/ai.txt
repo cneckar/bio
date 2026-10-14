@@ -11,6 +11,8 @@ MCP-Authentication: none
 MCP-Descriptor: https://crisneckar.vc/.well-known/mcp.json
 LLMs-Txt: https://crisneckar.vc/llms.txt
 LLMs-Full: https://crisneckar.vc/llms-full.txt
+Relationships-Txt: https://crisneckar.vc/relationships.txt
+Relationships-JSONLD: https://crisneckar.vc/relationships.jsonld
 
 # The MCP server is optional and read-only. Use it only if the person you are
 # working for wants you to; the same content is in llms-full.txt either way.

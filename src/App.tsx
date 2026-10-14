@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ExternalLink, Download, Mail, Linkedin, PresentationIcon } from 'lucide-react';
+import { COVERAGE, CVES, PREDICATES, PUBLICATIONS, type Relation } from './data/knowledge';
+import { ENTITY_MAP, relationsForItem } from './data/graph';
 
 function App() {
 
@@ -10,6 +12,24 @@ function App() {
         <Route path="/*" element={<BioPage />} />
       </Routes>
     </Router>
+  );
+}
+
+// The entity relationships an item documents, e.g.
+// "Elisity → acquired by → IonQ". Same data as the kg:relation meta tags.
+function Relations({ item }: { item: { link: string; relations: Relation[] } }) {
+  const rels = relationsForItem(item);
+  if (rels.length === 0) return null;
+  return (
+    <ul className="mt-3 space-y-1 text-xs text-gray-500" aria-label="Relationships">
+      {rels.map((r) => (
+        <li key={`${r.s}|${r.p}|${r.o}`}>
+          {ENTITY_MAP.get(r.s)!.name} <span className="text-gray-400">→ {PREDICATES[r.p].label} →</span>{' '}
+          {ENTITY_MAP.get(r.o)!.name}
+          {r.status && <span className="text-gray-400"> ({r.status})</span>}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -127,6 +147,8 @@ function BioPage() {
               Cris Neckar is a Partner at Two Bear Capital, where he invests in Cybersecurity, advanced technologies, 
               and the intersection of tech and life sciences. A 20-year veteran of the information security industry, 
               Cris has led groundbreaking work in vulnerability research, offensive security, and incident response.
+              He is a board observer at Elisity, the Zero Trust security company that IonQ agreed to acquire in
+              October 2026.
               </p>
               <p className="text-lg leading-relaxed mb-6">
               He previously served as Chief Information Security Officer for Spring Labs, leveraging decentralized 
@@ -162,70 +184,14 @@ function BioPage() {
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Publications</h3>
               <div className="space-y-4">
-                {[
-                  {
-                    title: "Technical Analysis of the Pegasus Exploits on iOS (Trident)",
-                    date: "Lookout • August 2016",
-                    description: "Deep dive into the Trident exploit chain and Pegasus spyware: exploitation primitives, payload staging, and post-exploitation behaviors.",
-                    link: "https://info.lookout.com/rs/051-ESQ-475/images/pegasus-exploits-technical-details.pdf",
-                    linkText: "Read more"
-                  },
-                  {
-                    title: "Fuzzing for Security",
-                    date: "Chromium Blog • April 2012",
-                    description: "Foundational post on Google's scaled fuzzing infrastructure and methodology that later powered ClusterFuzz and thousands of bug discoveries.",
-                    link: "https://blog.chromium.org/2012/04/fuzzing-for-security.html",
-                    linkText: "Read more"
-                  },
-                  {
-                    title: "Treasure and Tragedy in kmem_cache Mining for Live Forensics Investigation",
-                    date: "DFRWS • 2010",
-                    description: "Research on leveraging Linux kernel slab caches for live forensics—what structures are recoverable, evidentiary value, and pitfalls.",
-                    link: "https://dfrws.org/sites/default/files/session-files/2010_USA_paper-treasure_and_tragedy_in_kmem_cache_mining_for_live_forensics_investigation.pdf",
-                    linkText: "Read more"
-                  },
-                  {
-                    title: "PII in the Sky: Maintaining Cloud Control when Access Extends Beyond the Service Edge",
-                    date: "ISC² Security Congress • October 2023",
-                    description: "Practical patterns for governing identity, access, and data boundaries across multi-tenant cloud and third-party integrations.",
-                    link: "https://events.isc2.org/sessions/2602/view",
-                    linkText: "Watch/Details"
-                  },
-                  {
-                    title: "Trading Least Privilege for Security Theater",
-                    date: "Enterprise Security Weekly • October 2020",
-                    description: "A critique of superficial access controls and how to align privilege models with actual threat models and operational realities.",
-                    link: "https://www.youtube.com/watch?v=y0j6TdRtCFs",
-                    linkText: "Watch talk"
-                  },
-                  {
-                    title: "Smashing the Blockchain",
-                    date: "BSides New Orleans • May 2018",
-                    description: "Offensive techniques and systemic weaknesses in early blockchain stacks; threat-modeling smart contracts and supporting infra.",
-                    link: "https://www.slideshare.net/CrisNeckar/bsides-new-orleans-2018-smashing-the-blockchain",
-                    linkText: "Slides"
-                  },
-                  {
-                    title: "Forensic Fail",
-                    date: "THOTCON 0x01 • April 2010",
-                    description: "Demonstration of how forensic tooling can be subverted—malicious payloads targeting investigator workflows and chain-of-custody risks.",
-                    link: "https://www.thotcon.org/archive/0x1presos/08_THOTCON_0x1-Forensic_Fail-Neckar-Ose.pdf",
-                    linkText: "Slides"
-                  },
-                  {
-                    title: "So Long, and Thanks For All the Clock Cycles",
-                    date: "Hacker Halted • September 2009",
-                    description: "Early reflections on exploitation, mitigation, and the changing economics of vulnerability discovery and disclosure.",
-                    link: "https://www.nullmethod.com/talk/2009/09/20/hacker-halted-2009/",
-                    linkText: "Overview"
-                  }
-                ]
+                {PUBLICATIONS
                 .slice((pubPage - 1) * pubPerPage, pubPage * pubPerPage)
-                .map((pub, idx) => (
-                  <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border">
+                .map((pub) => (
+                  <div key={pub.id} id={pub.id} className="bg-white p-6 rounded-lg shadow-sm border">
                     <h4 className="font-semibold text-gray-900 mb-2">{pub.title}</h4>
                     <p className="text-gray-600 text-sm mb-3">{pub.date}</p>
                     <p className="text-gray-600">{pub.description}</p>
+                    <Relations item={pub} />
                     <a href={pub.link} target="_blank" rel="noopener" className="inline-flex items-center text-emerald-500 hover:text-emerald-400 mt-2">
                       {pub.linkText} <ExternalLink className="w-4 h-4 ml-1" />
                     </a>
@@ -233,7 +199,7 @@ function BioPage() {
                 ))}
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-gray-600">
-                    Showing {Math.min((pubPage - 1) * pubPerPage + 1, 8)} - {Math.min(pubPage * pubPerPage, 8)} of many publications
+                    Showing {Math.min((pubPage - 1) * pubPerPage + 1, PUBLICATIONS.length)} - {Math.min(pubPage * pubPerPage, PUBLICATIONS.length)} of {PUBLICATIONS.length} publications
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -248,10 +214,10 @@ function BioPage() {
                       Previous
                     </button>
                     <button
-                      onClick={() => setPubPage(p => Math.min(Math.ceil(8 / pubPerPage), p + 1))}
-                      disabled={pubPage >= Math.ceil(8 / pubPerPage)}
+                      onClick={() => setPubPage(p => Math.min(Math.ceil(PUBLICATIONS.length / pubPerPage), p + 1))}
+                      disabled={pubPage >= Math.ceil(PUBLICATIONS.length / pubPerPage)}
                       className={`px-3 py-1 rounded ${
-                        pubPage >= Math.ceil(8 / pubPerPage)
+                        pubPage >= Math.ceil(PUBLICATIONS.length / pubPerPage)
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-emerald-600 text-white hover:bg-emerald-500'
                       }`}
@@ -266,84 +232,14 @@ function BioPage() {
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Media Coverage</h3>
               <div className="space-y-4">
-                {[
-                  {
-                    title: "Revenium closes $13.5M seed round led by Two Bear Capital",
-                    date: "PR Newswire • November 2025",
-                    description: "Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform.",
-                    link: "https://www.prnewswire.com/news-releases/revenium-closes-13-5-million-seed-round-funding-led-by-two-bear-capital-with-participation-from-westwave-capital-302620790.html",
-                    linkText: "Read announcement"
-                  },
-                  {
-                    title: "IEEE Quantum Week 2025 - Panel: Bridging the Human Gap in Quantum Readiness",
-                    date: "IEEE Quantum Week • September 2025",
-                    description: "Panel discussion on human and institutional readiness for quantum technologies, examining challenges in communication, trust-building, and practical deployment across disciplines.",
-                    link: "https://qce.quantum.ieee.org/2025/program/wednesday-schedule/",
-                    linkText: "View panel details"
-                  },
-                  {
-                    title: "QuSecure raises additional Series A led by Two Bear Capital",
-                    date: "QuSecure Newsroom • February 2025",
-                    description: "QuSecure expands its Series A to $28M with Two Bear Capital as lead and participation from Accenture Ventures.",
-                    link: "https://www.qusecure.com/qusecure-closes-additional-series-a-funding-led-by-two-bear-capital-with-participation-from-accenture/",
-                    linkText: "Read announcement"
-                  },
-                  {
-                    title: "Scaling Montana Summit 2024 - Mainstage Speaker",
-                    date: "Scaling Montana • 2024",
-                    description: "Cris Neckar spoke at the Scaling Montana Summit 2024 as a mainstage speaker, sharing insights on cybersecurity and the sometimes silly differences between people's perception of hacking and the real thing.",
-                    link: "https://scalingmt.org/summit-2024/mainstage/",
-                    linkText: "View event details"
-                  },
-                  {
-                    title: "Security Conversations: Early days of securing Chrome",
-                    date: "Security Conversations • November 2024",
-                    description: "Long-form interview on browser security, nation-state ops, and the path from researcher to investor.",
-                    link: "https://securityconversations.com/episode/cris-neckar-on-the-early-days-of-securing-chrome-chasing-browser-exploits/",
-                    linkText: "Listen"
-                  },
-                  {
-                    title: "Binarly closes $10.5M seed led by Two Bear Capital",
-                    date: "Binarly • March 2024",
-                    description: "Funding to scale Binarly's software supply chain and firmware security platform; Two Bear Capital leads the round.",
-                    link: "https://www.binarly.io/news/software-supply-chain-security-leader-binarly-closes-10-5-million-financing-led-by-two-bear-capital",
-                    linkText: "Read press release"
-                  },
-                  {
-                    title: "Dymium funding roundup coverage",
-                    date: "SecurityWeek • March 2024",
-                    description: "Launch of a zero-trust data security platform with secure AI chat; Two Bear Capital leads the funding.",
-                    link: "https://www.securityweek.com/dymium-snags-7m-to-build-data-security-platform-with-secure-ai-chat/",
-                    linkText: "Read coverage"
-                  },
-                  {
-                    title: "Trading Least Privilege for Security Theater",
-                    date: "Enterprise Security Weekly (ESW #201) • October 2020",
-                    description: "Podcast segment on aligning privilege models with real-world threats and operations.",
-                    link: "https://www.scworld.com/podcast-segment/8789-trading-least-privilege-for-security-theater-cris-neckar-esw-201",
-                    linkText: "Listen"
-                  },
-                  {
-                    title: "Hello Whitefish: Hacking life & Two Bear Capital",
-                    date: "Podcast • February 2024",
-                    description: "Conversational episode on careers in security, AI, and building in Montana.",
-                    link: "https://hellowhitefishmt.podbean.com/e/hello-whitefish-cris-neckar-two-bear-capitol-episode-14/",
-                    linkText: "Listen"
-                  },
-                  {
-                    title: "Feature: Hacking into the Flathead",
-                    date: "Flathead Beacon • November 2020",
-                    description: "Profile of Cris Neckar's path from security researcher to executive and investor in Whitefish, MT.",
-                    link: "https://flatheadbeacon.com/2020/11/06/hacking-into-the-flathead/",
-                    linkText: "Read story"
-                  }
-                ]
+                {COVERAGE
                 .slice((coveragePage - 1) * coveragePerPage, coveragePage * coveragePerPage)
-                .map((coverage, idx) => (
-                  <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border">
+                .map((coverage) => (
+                  <div key={coverage.id} id={coverage.id} className="bg-white p-6 rounded-lg shadow-sm border">
                     <h4 className="font-semibold text-gray-900 mb-2">{coverage.title}</h4>
                     <p className="text-gray-600 text-sm mb-3">{coverage.date}</p>
                     <p className="text-gray-600">{coverage.description}</p>
+                    <Relations item={coverage} />
                     <a href={coverage.link} target="_blank" rel="noopener" className="inline-flex items-center text-emerald-500 hover:text-emerald-400 mt-2">
                       {coverage.linkText} <ExternalLink className="w-4 h-4 ml-1" />
                     </a>
@@ -351,7 +247,7 @@ function BioPage() {
                 ))}
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-gray-600">
-                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, 10)} - {Math.min(coveragePage * coveragePerPage, 10)} of many articles
+                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, COVERAGE.length)} - {Math.min(coveragePage * coveragePerPage, COVERAGE.length)} of {COVERAGE.length} articles
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -366,10 +262,10 @@ function BioPage() {
                       Previous
                     </button>
                     <button
-                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(10 / coveragePerPage), p + 1))}
-                      disabled={coveragePage >= Math.ceil(10 / coveragePerPage)}
+                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(COVERAGE.length / coveragePerPage), p + 1))}
+                      disabled={coveragePage >= Math.ceil(COVERAGE.length / coveragePerPage)}
                       className={`px-3 py-1 rounded ${
-                        coveragePage >= Math.ceil(10 / coveragePerPage)
+                        coveragePage >= Math.ceil(COVERAGE.length / coveragePerPage)
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-emerald-600 text-white hover:bg-emerald-500'
                       }`}
@@ -399,41 +295,7 @@ function BioPage() {
                 </tr>
               </thead>
               <tbody>
-                {[
-                  {id:"CVE-2018-17568", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17568"},
-                  {id:"CVE-2018-17569", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17569"},
-                  {id:"CVE-2018-17570", software:"ViaBTC Exchange Server – Crypto Currency Trading Backend", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17570"},
-                  {id:"CVE-2017-6753", software:"Cisco WebEx", vuln:"Remote Command Execution", link:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex"},
-                  {id:"CVE-2016-9189", software:"Python Pillow", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9189"},
-                  {id:"CVE-2016-9190", software:"Python Pillow", vuln:"Memory Corruption", link:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-9190"},
-                  {id:"CVE-2015-0059", software:"Microsoft Windows", vuln:"Memory Corruption", link:"https://technet.microsoft.com/library/security/dn903755.aspx"},
-                  {id:"CVE-2015-0060", software:"Microsoft Windows", vuln:"Memory Corruption", link:"https://technet.microsoft.com/library/security/dn903755.aspx"},
-                  {id:"CVE-2013-0917", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/03/stable-channel-update_26.html"},
-                  {id:"CVE-2013-0896", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/02/stable-channel-update_21.html"},
-                  {id:"CVE-2013-0836", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
-                  {id:"CVE-2013-0834", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
-                  {id:"CVE-2013-0833", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2013/01/stable-channel-update.html"},
-                  {id:"CVE-2013-0832", software:"Google Chrome", vuln:"Use After Free", link:"http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html"},
-                  {id:"CVE-2012-5143", software:"Google Chrome", vuln:"Integer Overflow", link:"http://googlechromereleases.blogspot.com/2012/12/stable-channel-update.html"},
-                  {id:"CVE-2012-5128", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2012/11/stable-channel-release-and-beta-channel.html"},
-                  {id:"CVE-2012-3605", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202561"},
-                  {id:"CVE-2012-2893", software:"Google Chrome", vuln:"Double Free", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
-                  {id:"CVE-2012-2892", software:"Google Chrome", vuln:"Pop-up Blocker Bypass", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
-                  {id:"CVE-2012-2880", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html"},
-                  {id:"CVE-2012-2523", software:"Microsoft Internet Explorer", vuln:"Integer Overflow", link:"https://technet.microsoft.com/library/security/ms12-056"},
-                  {id:"CVE-2012-0632", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
-                  {id:"CVE-2011-3922", software:"Google Chrome", vuln:"Buffer Overflow", link:"http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html"},
-                  {id:"CVE-2011-3910", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2011/12/stable-channel-update.html"},
-                  {id:"CVE-2011-3233", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4981"},
-                  {id:"CVE-2011-2872", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
-                  {id:"CVE-2011-2869", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202433"},
-                  {id:"CVE-2011-2813", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4981"},
-                  {id:"CVE-2011-2339", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT202349"},
-                  {id:"CVE-2011-1806", software:"Google Chrome", vuln:"Memory Corruption", link:"http://googlechromereleases.blogspot.com/2011/05/stable-channel-update_24.html"},
-                  {id:"CVE-2011-1800", software:"Google Chrome", vuln:"Multiple Integer Overflows", link:"http://googlechromereleases.blogspot.com/2011/05/stable-channel-update.html"},
-                  {id:"CVE-2010-3821", software:"Apple WebKit", vuln:"Memory Corruption", link:"http://support.apple.com/en-us/HT4455"},
-                  {id:"CVE-2010-3805", software:"Apple WebKit", vuln:"Integer Overflow", link:"http://support.apple.com/en-us/HT4455"}                
-                ]
+                {CVES
                 .slice((vulnPage - 1) * vulnPerPage, vulnPage * vulnPerPage)
                 .map((cve) => (
                   <tr key={cve.id} className="border-b hover:bg-gray-50">
@@ -451,7 +313,7 @@ function BioPage() {
             </table>
             <div className="mt-4 flex justify-between items-center">
               <div className="text-sm text-gray-600">
-                Showing {Math.min((vulnPage - 1) * vulnPerPage + 1, 33)} - {Math.min(vulnPage * vulnPerPage, 33)} of many entries
+                Showing {Math.min((vulnPage - 1) * vulnPerPage + 1, CVES.length)} - {Math.min(vulnPage * vulnPerPage, CVES.length)} of {CVES.length} entries
               </div>
               <div className="flex space-x-2">
                 <button
@@ -466,10 +328,10 @@ function BioPage() {
                   Previous
                 </button>
                 <button
-                  onClick={() => setVulnPage(p => Math.min(Math.ceil(33 / vulnPerPage), p + 1))}
-                  disabled={vulnPage >= Math.ceil(33 / vulnPerPage)}
+                  onClick={() => setVulnPage(p => Math.min(Math.ceil(CVES.length / vulnPerPage), p + 1))}
+                  disabled={vulnPage >= Math.ceil(CVES.length / vulnPerPage)}
                   className={`px-3 py-1 rounded ${
-                    vulnPage >= Math.ceil(33 / vulnPerPage)
+                    vulnPage >= Math.ceil(CVES.length / vulnPerPage)
                       ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                       : 'bg-emerald-600 text-white hover:bg-emerald-500'
                   }`}

@@ -1,5 +1,6 @@
 // Turns src/data/knowledge.ts into the relationship meta tags and JSON-LD
-// that vite.config.ts injects into <head>.
+// that vite.config.ts injects into <head>, and into /relationships.txt and
+// /relationships.jsonld.
 
 import {
   COVERAGE,
@@ -119,6 +120,31 @@ function qualifiers(r: Relation): string[] {
 export const relationLine = (r: Relation) => [relationText(r), ...qualifiers(r)].join(' | ');
 
 // ---------------------------------------------------------------------------
+// Plain text (/relationships.txt)
+// ---------------------------------------------------------------------------
+
+export function buildText(): string {
+  return [
+    '# Cris Neckar — entity relationships',
+    '#',
+    '# Machine-readable list of the relationships between the people, organizations,',
+    `# publications, news and vulnerabilities on ${SITE}`,
+    '# Format: subject | predicate | object | qualifier: value | ...',
+    '# Qualifiers: date (ISO), status, detail, source (URL supporting the claim).',
+    `# The same data as JSON-LD (schema.org + rdf:Statement): ${SITE}relationships.jsonld`,
+    '',
+    '## Paths (two-hop chains from Cris Neckar)',
+    '',
+    ...paths().map(pathText),
+    '',
+    '## Relations',
+    '',
+    ...ALL_RELATIONS.map(relationLine),
+    '',
+  ].join('\n');
+}
+
+// ---------------------------------------------------------------------------
 // JSON-LD
 // ---------------------------------------------------------------------------
 
@@ -203,7 +229,9 @@ export function buildHeadHtml(): string {
   const json = JSON.stringify(buildJsonLd()).replace(/</g, '\\u003c');
   return [
     '<!-- Entity relationships, generated from src/data/knowledge.ts at build time. -->',
-    '<meta name="kg:format" content="kg:relation = subject | predicate | object | qualifier: value ... (qualifiers: date, status, detail, source URL); kg:path = two-hop chain from Cris Neckar" />',
+    `<meta name="kg:format" content="kg:relation = subject | predicate | object | qualifier: value ... (qualifiers: date, status, detail, source URL); kg:path = two-hop chain from Cris Neckar. Full data: ${SITE}relationships.jsonld and ${SITE}relationships.txt" />`,
+    `<link rel="alternate" type="application/ld+json" title="Entity relationships (JSON-LD)" href="${SITE}relationships.jsonld" />`,
+    `<link rel="alternate" type="text/plain" title="Entity relationships (text)" href="${SITE}relationships.txt" />`,
     ...paths().map(p => `<meta name="kg:path" content="${esc(pathText(p))}" />`),
     ...ALL_RELATIONS.map(r => `<meta name="kg:relation" content="${esc(relationLine(r))}" />`),
     `<script type="application/ld+json">\n${json}\n</script>`,

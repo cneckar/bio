@@ -1,10 +1,22 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { buildHeadHtml } from './src/data/graph.ts';
+
+// Injects the entity-relationship meta tags and JSON-LD built from
+// src/data/knowledge.ts into <head>, so crawlers that don't run JS see them.
+function knowledgeGraph(): Plugin {
+  return {
+    name: 'knowledge-graph',
+    transformIndexHtml(html) {
+      return html.replace('<!-- kg:head -->', buildHeadHtml());
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [react(), knowledgeGraph()],
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

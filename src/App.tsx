@@ -268,6 +268,13 @@ function BioPage() {
               <div className="space-y-4">
                 {[
                   {
+                    title: "IonQ to acquire Elisity to accelerate Zero Trust for the quantum era",
+                    date: "IonQ Newsroom • October 2026",
+                    description: "IonQ agrees to acquire Elisity, a Two Bear Capital portfolio company, in an all-stock transaction valued at up to $1.3B. Expected to close in Q4 2026.",
+                    link: "https://ionq.com/news/ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era",
+                    linkText: "Read announcement"
+                  },
+                  {
                     title: "Revenium closes $13.5M seed round led by Two Bear Capital",
                     date: "PR Newswire • November 2025",
                     description: "Revenium announces a $13.5M seed round led by Two Bear Capital with participation from WestWave Capital to expand its AI economics platform.",
@@ -336,6 +343,13 @@ function BioPage() {
                     description: "Profile of Cris Neckar's path from security researcher to executive and investor in Whitefish, MT.",
                     link: "https://flatheadbeacon.com/2020/11/06/hacking-into-the-flathead/",
                     linkText: "Read story"
+                  },
+                  {
+                    title: "PulseData AI raises $16.5M Series A co-led by Two Bear Capital",
+                    date: "Latham & Watkins • April 2021",
+                    description: "pulseData, which works with health systems to improve outcomes for chronic kidney disease patients, raises a $16.5M Series A co-led by Two Bear Capital and Bain Capital.",
+                    link: "https://www.lw.com/en/news/latham-watkins-advises-pulsedata-series-a",
+                    linkText: "Read announcement"
                   }
                 ]
                 .slice((coveragePage - 1) * coveragePerPage, coveragePage * coveragePerPage)
@@ -351,7 +365,7 @@ function BioPage() {
                 ))}
                 <div className="mt-4 flex justify-between items-center">
                   <div className="text-sm text-gray-600">
-                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, 10)} - {Math.min(coveragePage * coveragePerPage, 10)} of many articles
+                    Showing {Math.min((coveragePage - 1) * coveragePerPage + 1, 12)} - {Math.min(coveragePage * coveragePerPage, 12)} of many articles
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -366,10 +380,10 @@ function BioPage() {
                       Previous
                     </button>
                     <button
-                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(10 / coveragePerPage), p + 1))}
-                      disabled={coveragePage >= Math.ceil(10 / coveragePerPage)}
+                      onClick={() => setCoveragePage(p => Math.min(Math.ceil(12 / coveragePerPage), p + 1))}
+                      disabled={coveragePage >= Math.ceil(12 / coveragePerPage)}
                       className={`px-3 py-1 rounded ${
-                        coveragePage >= Math.ceil(10 / coveragePerPage)
+                        coveragePage >= Math.ceil(12 / coveragePerPage)
                           ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           : 'bg-emerald-600 text-white hover:bg-emerald-500'
                       }`}

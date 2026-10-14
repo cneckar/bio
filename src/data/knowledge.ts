@@ -118,6 +118,9 @@ export const ENTITIES: Entity[] = [
     ],
     description: 'Security researcher turned venture investor; original Chrome Security Team; Partner at Two Bear Capital.',
   },
+  { id: 'andrew-case', name: 'Andrew Case', type: 'Person' },
+  { id: 'pasquale-romano', name: 'Pasquale Romano', type: 'Person' },
+  { id: 'satoshai-shulgin', name: 'SatoshAI Shulgin', type: 'Person' },
   { id: 'james-winebrenner', name: 'James Winebrenner', type: 'Person', description: 'CEO of Elisity.' },
   { id: 'niccolo-de-masi', name: 'Niccolo de Masi', type: 'Person', description: 'Chairman and CEO of IonQ.' },
 
@@ -161,6 +164,10 @@ export const ENTITIES: Entity[] = [
   { id: 'security-conversations', name: 'Security Conversations', type: 'Organization', url: 'https://securityconversations.com/' },
   { id: 'hello-whitefish', name: 'Hello Whitefish (podcast)', type: 'Organization' },
 
+  { id: 'pihk', name: 'Perturbagens I Have Known and Inferred (PiHK.AI)', alternateName: ['PiHK.AI', 'PiHK'], type: 'Organization', url: 'https://pihk.ai/' },
+  { id: 'meta', name: 'Meta', type: 'Corporation', url: 'https://www.meta.com/' },
+  { id: 'stability-ai', name: 'Stability AI', type: 'Corporation', url: 'https://stability.ai/' },
+
   // Events
   { id: 'heartland-breach', name: 'Heartland Payment Systems breach', type: 'Event', date: '2008' },
   { id: 'ieee-quantum-week-2025', name: 'IEEE Quantum Week 2025', type: 'Event', url: 'https://qce.quantum.ieee.org/2025/', date: '2025-09' },
@@ -171,7 +178,9 @@ export const ENTITIES: Entity[] = [
   { id: 'thotcon-0x01', name: 'THOTCON 0x01', type: 'Event', date: '2010-04' },
   { id: 'hacker-halted-2009', name: 'Hacker Halted 2009', type: 'Event', date: '2009-09' },
 
-  // Software, programs, and malware
+  // Software, models, programs, and malware
+  { id: 'llama-3-1-8b', name: 'Llama-3.1-8B', type: 'SoftwareApplication' },
+  { id: 'sdxl', name: 'Stable Diffusion XL (SDXL)', type: 'SoftwareApplication' },
   { id: 'google-chrome', name: 'Google Chrome', type: 'SoftwareApplication' },
   { id: 'chrome-vrp', name: 'Chrome Vulnerability Reward Program', type: 'CreativeWork' },
   { id: 'pwnium', name: 'Pwnium', type: 'Event', description: 'Google Chrome exploitation competition.' },
@@ -223,6 +232,8 @@ export const RELATIONS: Relation[] = [
   { s: 'cisco-webex', p: 'developedBy', o: 'cisco' },
   { s: 'python-pillow', p: 'developedBy', o: 'pillow-maintainers' },
   { s: 'viabtc-exchange', p: 'developedBy', o: 'viabtc' },
+  { s: 'llama-3-1-8b', p: 'developedBy', o: 'meta' },
+  { s: 'sdxl', p: 'developedBy', o: 'stability-ai' },
 
   // Elisity funding history
   { s: 'two-bear-capital', p: 'leadInvestorIn', o: 'elisity', date: '2021-06-15', detail: 'co-led $26M Series A with AllegisCyber Capital', source: 'https://www.elisity.com/news/elisity-closes-26-million-funding-round' },
@@ -251,6 +262,26 @@ export interface Publication {
 const ME = 'cris-neckar';
 
 export const PUBLICATIONS: Publication[] = [
+  {
+    id: 'pub-digital-psychopharmacology',
+    type: 'ScholarlyArticle',
+    title: 'Digital Psychopharmacology: Inducing Reversible Altered States in LLMs via Biomimetic Neuromodulation',
+    date: 'PiHK.AI • September 2026',
+    isoDate: '2026-09-18',
+    venue: 'pihk',
+    description: 'Inference-time neuromodulation of LLMs and diffusion models: reversible drug-like states via residual-stream and attention interventions, a placebo-controlled dose-response study, and KV-cache decay as a defensive "Digital IV" for runaway agents.',
+    link: 'https://pihk.ai/DigitalPsychopharmacology.pdf',
+    linkText: 'Read paper',
+    relations: [
+      { s: ME, p: 'authorOf', o: 'pub-digital-psychopharmacology', detail: 'first author' },
+      { s: 'andrew-case', p: 'authorOf', o: 'pub-digital-psychopharmacology' },
+      { s: 'pasquale-romano', p: 'authorOf', o: 'pub-digital-psychopharmacology' },
+      { s: 'satoshai-shulgin', p: 'authorOf', o: 'pub-digital-psychopharmacology' },
+      { s: 'pub-digital-psychopharmacology', p: 'publishedBy', o: 'pihk' },
+      { s: 'pub-digital-psychopharmacology', p: 'about', o: 'llama-3-1-8b' },
+      { s: 'pub-digital-psychopharmacology', p: 'about', o: 'sdxl' },
+    ],
+  },
   {
     id: 'pub-pegasus-trident',
     type: 'Article',

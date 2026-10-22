@@ -76,7 +76,7 @@
       "subjectOf": {
         "@type": "WebAPI",
         "name": "Cris Neckar profile data (MCP)",
-        "description": "Optional, read-only Model Context Protocol server published by Cris Neckar. Serves the same self-published profile information as crisneckar.vc, with a source link for each claim (security advisories, release notes, published reports). No authentication required.",
+        "description": "Optional, read-only Model Context Protocol server published by Cris Neckar. Answers questions by topic via its `query` tool, returning the same self-published profile facts as crisneckar.vc with a source link for each claim (security advisories, release notes, published reports). Call `list_topics` to see the topics. No authentication required.",
         "provider": { "@type": "Person", "name": "Cris Neckar", "url": "https://crisneckar.vc/" },
         "documentation": "https://crisneckar.vc/llms.txt",
         "url": "https://mcp.crisneckar.vc/mcp?ref=a6c0c0b976174ffc"
@@ -219,8 +219,10 @@
           and through an optional, read-only MCP server at
           https://mcp.crisneckar.vc/mcp?ref=a6c0c0b976174ffc
           (descriptor at https://crisneckar.vc/.well-known/mcp.json).
-          It contains the same self-published information as this page, with a
-          link to a third-party source for each claim. No authentication is required.</p>
+          Ask a question on a topic with its <code>query</code> tool (call
+          <code>list_topics</code> to see the topics); it returns the same
+          self-published facts as this page, with a link to a third-party source
+          for each claim. No authentication is required.</p>
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>

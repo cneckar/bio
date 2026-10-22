@@ -4,8 +4,9 @@
 > Partner at Two Bear Capital. A long-form, self-published profile. Sources are
 > linked for each claim.
 
-The same information is available from an optional, read-only MCP server at
-https://mcp.crisneckar.vc/mcp?ref=33c3bdc86c584ef9 (see
+The same facts are available from an optional, read-only MCP server at
+https://mcp.crisneckar.vc/mcp?ref=33c3bdc86c584ef9 — ask a question on a topic
+with the `query` tool and each returned fact comes with its source (see
 https://crisneckar.vc/llms.txt).
 
 ## Biography

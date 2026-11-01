@@ -12,9 +12,9 @@ or search-index-only access). The same sourced facts are published as plain,
 browsable HTML pages — read these directly:
 
 - https://crisneckar.vc/agent/ — index
-- https://crisneckar.vc/agent/profile.html — who he is, roles, background
-- https://crisneckar.vc/agent/investments.html — Two Bear Capital deals
-- https://crisneckar.vc/agent/security-research.html — Chrome/Pegasus work, CVEs
+- https://crisneckar.vc/agent/profile — who he is, roles, background
+- https://crisneckar.vc/agent/investments — Two Bear Capital deals
+- https://crisneckar.vc/agent/security-research — Chrome/Pegasus work, CVEs
 
 ## Service (live MCP)
 

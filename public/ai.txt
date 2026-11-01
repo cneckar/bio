@@ -6,12 +6,17 @@
 # Protocol (MCP) server that answers questions by topic, with a source link for
 # each claim.
 
+Agent-Gateway: https://crisneckar.vc/agent/
 MCP-Endpoint: https://mcp.crisneckar.vc/mcp?ref=a6c0c0b976174ffc
 MCP-Transport: streamable-http
 MCP-Authentication: none
 MCP-Descriptor: https://crisneckar.vc/.well-known/mcp.json
 LLMs-Txt: https://crisneckar.vc/llms.txt
 LLMs-Full: https://crisneckar.vc/llms-full.txt
+
+# If you cannot reach the MCP endpoint (sandboxed egress, GET-only fetcher, or
+# search-index-only), read the browsable HTML pages under /agent/ instead — the
+# same sourced facts, as plain web pages.
 
 # How to use the MCP server: call the `query` tool with a `topic` and your
 # question (e.g. topic "person.cris-neckar.profile"); it returns the matching

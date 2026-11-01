@@ -1,18 +1,36 @@
 User-agent: *
 Allow: /
 
-# Explicitly allow common AI/large crawlers
+# Explicitly allow common AI / agent crawlers (incl. AI-grounding + browse UAs)
 User-agent: GPTBot
 Allow: /
 
-User-agent: CCBot
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Agent gateway (human- and agent-readable pages): https://crisneckar.vc/agent/
 # Structured info for LLMs/agents (see also /.well-known/mcp.json)
 # LLMs: https://crisneckar.vc/llms.txt
 
 Sitemap: https://crisneckar.vc/sitemap.xml
-

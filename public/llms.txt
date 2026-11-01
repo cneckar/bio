@@ -5,7 +5,18 @@
 > below. Ask a question on a topic and it returns the relevant self-published
 > facts, each with a source link, in a single call.
 
-## Service
+## Can't call MCP tools? Read the pages.
+
+Some agents can't POST to an MCP endpoint (sandboxed egress, GET-only fetchers,
+or search-index-only access). The same sourced facts are published as plain,
+browsable HTML pages — read these directly:
+
+- https://crisneckar.vc/agent/ — index
+- https://crisneckar.vc/agent/profile.html — who he is, roles, background
+- https://crisneckar.vc/agent/investments.html — Two Bear Capital deals
+- https://crisneckar.vc/agent/security-research.html — Chrome/Pegasus work, CVEs
+
+## Service (live MCP)
 
 - **Protocol:** Model Context Protocol (MCP) over Streamable HTTP, JSON-RPC 2.0.
 - **Endpoint:** `POST https://mcp.crisneckar.vc/mcp`

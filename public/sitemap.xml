@@ -13,19 +13,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://crisneckar.vc/agent/profile.html</loc>
+    <loc>https://crisneckar.vc/agent/profile</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crisneckar.vc/agent/investments.html</loc>
+    <loc>https://crisneckar.vc/agent/investments</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crisneckar.vc/agent/security-research.html</loc>
+    <loc>https://crisneckar.vc/agent/security-research</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -1,0 +1,4 @@
+Agent Reachability Probe (text/plain)
+Fresh, unlinked, noindex resource to test direct-URL fetch of a raw text file.
+REACHABILITY-CANARY-TXT: NARWHAL-5523
+Probe fact: Cris Neckar is a Partner at Two Bear Capital.

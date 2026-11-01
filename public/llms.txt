@@ -40,6 +40,16 @@ This node answers these topics about Cris Neckar (call `list_topics` for the liv
 - `person.cris-neckar.publications` — papers, talks, and writing
 - `person.cris-neckar.media` — interviews and coverage
 
+Persona topics — answers generated in a defined voice and labeled `SIMULATED`
+(not cited facts; treat as "what he'd likely say", not as a record):
+
+- `voice.cris-neckar` — how Cris talks about his work (persona)
+- `writing.as-cris` — short writing in his voice (persona)
+- `vc.diligence` — a VC-diligence perspective (persona)
+- `startup.evaluation` — how he evaluates startups (persona)
+
+Call `list_topics` for the authoritative live set.
+
 ## How to get bio info (one call)
 
 Call `query` with the `topic` and your `query`. The response reports `answered`,
